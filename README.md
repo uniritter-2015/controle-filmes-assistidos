@@ -2,6 +2,9 @@
 Sistema para controle de filmes já assistidos.
 
 
+####[Série de  videos sobre Git por Fabio Akita](https://www.youtube.com/watch?v=jdinE9SkUnE&list=PLjSvZRjBVKtxSjp8qgX6FaGP8zneP9B4G)
+####[Contribuindo em projetos open source com o github](http://tableless.com.br/contribuindo-em-projetos-open-source-com-o-github/)
+
 ## Especificação de software:
 Sistema para controle de filmes já assistidos.
 Deve possuir uma lista para consulta, com opções para inclusão, edição e exclusão.
