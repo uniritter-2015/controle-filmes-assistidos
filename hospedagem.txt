@@ -20,3 +20,10 @@ Dns Zone check is enabled.
 | Feature List: hdbr2
 | Language: pt_br
 +===================================+
+
+Dados do banco de dados:
+Servername: localhost
+Database:   mfqgvcom_dbase
+User:       mfqgvcom_admin
+Password:   LIDCc7iGySlr
+PHPMyAdmin: http://187.45.180.6:2082/cpsess6197110409/3rdparty/phpMyAdmin/index.php
