@@ -4,7 +4,7 @@ mfqjv@sistemadrh.com.br
 e0ynrq03vweu
 
 BANCO
-PHPMyAdmin: http://http://187.45.180.6:2082/cpsess6197110409/3rdparty/phpMyAdmin/index.php
+PHPMyAdmin: http://187.45.180.6:2082/cpsess2084118121/3rdparty/phpMyAdmin/index.php
 banco sistemad_mfqjv
 user sistemad_mfqjv
 senha e0ynrq03vweu
