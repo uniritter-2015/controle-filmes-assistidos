@@ -7,13 +7,13 @@ class GeneroSeeder extends Seeder
 {
     public function run()
     {
-        Genero::create(array('nome' =>'Comédia'));
-        Genero::create(array('nome' =>'Drama'));
-        Genero::create(array('nome' =>'Terror'));
-        Genero::create(array('nome' =>'Suspense'));
-        Genero::create(array('nome' =>'Documentário'));
-        Genero::create(array('nome' =>'Românce'));
-        Genero::create(array('nome' =>'Erótico'));
-        Genero::create(array('nome' =>'Ação'));
+        Genero::create(array('nome' =>'comédia'));
+        Genero::create(array('nome' =>'drama'));
+        Genero::create(array('nome' =>'terror'));
+        Genero::create(array('nome' =>'suspense'));
+        Genero::create(array('nome' =>'documentário'));
+        Genero::create(array('nome' =>'românce'));
+        Genero::create(array('nome' =>'erótico'));
+        Genero::create(array('nome' =>'ação'));
     }
 }
