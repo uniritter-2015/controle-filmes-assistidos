@@ -8,6 +8,13 @@ use App\Filme;
 
 class FilmesTest extends \TestCase{
 
+	public function testGetIndexRequest()
+	{
+		$response = $this->call('GET', '/');
+	
+		$this->assertEquals(200, $response->getStatusCode());
+	}
+	
 	public function testFilmeValidoDeveSerCriado()
 	{
 		$acao = Genero::findOrNew( 8 );
@@ -53,7 +60,6 @@ class FilmesTest extends \TestCase{
 		$umDrinkNoInferno->genero()->associate( $acao );
 		$umDrinkNoInferno->save();
 	}
-	
 	
 	/**
 	 * @expectedException PDOException
