@@ -55,7 +55,9 @@ class FilmesTest extends \TestCase{
 	}
 	
 	
-	
+	/**
+	 * @expectedException PDOException
+	 */
 	public function testFilmeComNomeJaExistenteDeveFalhar()
 	{
 		$comedia = Genero::findOrNew( 1 );
