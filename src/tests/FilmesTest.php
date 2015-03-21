@@ -39,4 +39,18 @@ class FilmesTest extends \TestCase{
 		$umDrinkNoInferno->pais()->associate( $eua );
 		$umDrinkNoInferno->save();		
 	}
+	
+	/**
+	 * @expectedException PDOException
+	 */
+	public function testFilmeSemPaisDeveFalhar()
+	{
+		$acao = Genero::findOrNew( 8 );
+	
+		$umDrinkNoInferno = new Filme();
+		$umDrinkNoInferno->nome = 'Um Drink no Inferno';
+		$umDrinkNoInferno->nota = 8;
+		$umDrinkNoInferno->genero()->associate( $acao );
+		$umDrinkNoInferno->save();
+	}
 }
