@@ -53,4 +53,30 @@ class FilmesTest extends \TestCase{
 		$umDrinkNoInferno->genero()->associate( $acao );
 		$umDrinkNoInferno->save();
 	}
+	
+	
+	
+	public function testFilmeComNomeJaExistenteDeveFalhar()
+	{
+		$comedia = Genero::findOrNew( 1 );
+		$eua = Pais::find( 1 );
+	
+		$filme01 = new Filme();
+		$filme01->nome = 'Uma Babá quase Perfeita';
+		$filme01->nota = 8;
+		$filme01->genero()->associate( $comedia );
+		$filme01->pais()->associate( $eua );
+		$filme01->save();
+		
+		//
+		
+		$documentario = Genero::findOrNew( 5 );
+		
+		$filme02 = new Filme();
+		$filme02->nome = 'Uma Babá quase Perfeita';
+		$filme02->nota = 9;
+		$filme02->genero()->associate( $documentario );
+		$filme02->pais()->associate( $eua );
+		$filme02->save();
+	}
 }
