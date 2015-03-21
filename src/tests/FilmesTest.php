@@ -25,4 +25,18 @@ class FilmesTest extends \TestCase{
 		$this->assertTrue( $salvou );
 		
 	}
+	
+	/**
+	 * @expectedException PDOException
+	 */
+	public function testFilmeSemGeneroDeveFalhar()
+	{
+		$eua = Pais::find( 1 );
+		
+		$umDrinkNoInferno = new Filme();
+		$umDrinkNoInferno->nome = 'Um Drink no Inferno';
+		$umDrinkNoInferno->nota = 8;
+		$umDrinkNoInferno->pais()->associate( $eua );
+		$umDrinkNoInferno->save();		
+	}
 }
