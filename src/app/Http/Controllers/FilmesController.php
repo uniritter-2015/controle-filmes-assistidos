@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class FilmesController extends Controller {
 
-    public function index()
+    public function getIndex()
     {
         $filmes = Filme::latest('created_at')->get();
 
