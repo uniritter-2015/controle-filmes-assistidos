@@ -4,7 +4,7 @@
 
 	@include('filmes.partials.erros')
 	
-	{!! Form::open(['url' => 'incluir', 'files' => true]) !!}
+	{!! Form::open(['url' => 'salvar', 'files' => true]) !!}
     	@include('filmes.partials.filme_form')
     {!! Form::close() !!}
     

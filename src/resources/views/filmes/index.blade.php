@@ -3,17 +3,16 @@
 @section('content')
 
 	<ul>
-		<li><h3>{!! Html::link(URL::to('incluir'), 'Incluir') !!}</h3></li>
+		<li><h3>{!! Html::link(URL::to('form-cadastrar-filme'), 'Cadastrar') !!}</h3></li>
 	</ul>
 
-    <h1>Filmes</h1>
+    <h3>Filmes</h3>
 
     @foreach($filmes as $filme)
         <article>
             <h2>
-                <a href="{{ action('FilmesController@detalhes', [$filme->id]) }}"> {{ $filme->nome }}</a>
+            	{!! Html::link( URL::to('form-cadastrar-filme'), 'Cadastrar') !!}
             </h2>
-
 
         </article>
     @endforeach
