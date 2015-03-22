@@ -3,7 +3,7 @@
 @section('content')
 
 	<ul>
-		<li>{!! Html::link(URL::to('incluir'), 'incluir') !!}</li>
+		<li><h3>{!! Html::link(URL::to('incluir'), 'Incluir') !!}</h3></li>
 	</ul>
 
     <h1>Filmes</h1>
