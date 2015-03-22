@@ -1,6 +1,11 @@
 @extends('app')
 
 @section('content')
+
+	<ul>
+		<li>{!! Html::link(URL::to('incluir'), 'incluir') !!}</li>
+	</ul>
+
     <h1>Filmes</h1>
 
     @foreach($filmes as $filme)
