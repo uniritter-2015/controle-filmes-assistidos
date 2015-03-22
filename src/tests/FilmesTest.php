@@ -6,7 +6,7 @@ use App\Genero;
 use App\Pais;
 use App\Filme;
 
-class FilmesTest extends \TestCase{
+class FilmesTest extends \TestCase {
 
 	public function testGetIndexRequest()
 	{
@@ -15,9 +15,9 @@ class FilmesTest extends \TestCase{
 		$this->assertEquals(200, $response->getStatusCode());
 	}
 	
-	public function testGetFormCadastrarFilmeRequest()
+	public function testGetFormCadastroRequest()
 	{
-		$response = $this->call('GET', 'form-cadastrar-filme');
+		$response = $this->call('GET', 'form-cadastro');
 	
 		$this->assertEquals(200, $response->getStatusCode());
 	}
