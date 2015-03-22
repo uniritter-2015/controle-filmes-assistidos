@@ -15,9 +15,9 @@ class FilmesTest extends \TestCase{
 		$this->assertEquals(200, $response->getStatusCode());
 	}
 	
-	public function testGetIncluirRequest()
+	public function testGetFormCadastrarFilmeRequest()
 	{
-		$response = $this->call('GET', 'incluir');
+		$response = $this->call('GET', 'form-cadastrar-filme');
 	
 		$this->assertEquals(200, $response->getStatusCode());
 	}
@@ -29,6 +29,7 @@ class FilmesTest extends \TestCase{
 		
 		$umDrinkNoInferno = new Filme();
 		$umDrinkNoInferno->nome = 'Um Drink no Inferno';
+		$umDrinkNoInferno->ano = 1998;
 		$umDrinkNoInferno->nota = 8;
 		$umDrinkNoInferno->genero()->associate( $acao );
 		$umDrinkNoInferno->pais()->associate( $eua );
@@ -94,4 +95,38 @@ class FilmesTest extends \TestCase{
 		$filme02->pais()->associate( $eua );
 		$filme02->save();
 	}
+
+
+	/**
+	 * @expectedException PDOException
+	 */
+	public function testFilmeSemNomeDeveFalhar()
+	{
+		$comedia = Genero::findOrNew( 1 );
+		$eua = Pais::find( 1 );
+	
+		$filme = new Filme();
+		$filme->nota = 8;
+		$filme->ano = 2001;
+		$filme->genero()->associate( $comedia );
+		$filme->pais()->associate( $eua );
+		$filme->save();
+	}
+	
+	/**
+	 * @expectedException PDOException
+	 */
+	public function testFilmeSemAnoDeveFalhar()
+	{
+		$comedia = Genero::findOrNew( 1 );
+		$eua = Pais::find( 1 );
+		
+		$filme = new Filme();
+		$filme->nome = 'Uma Babá quase Perfeita';
+		$filme->nota = 8;
+		$filme->genero()->associate( $comedia );
+		$filme->pais()->associate( $eua );
+		$filme->save();
+	}
+
 }
