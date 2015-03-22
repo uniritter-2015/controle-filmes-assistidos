@@ -17,13 +17,46 @@ class FilmesController extends Controller {
         return view('filmes.index',compact('filmes'));
     }
     
-    public function getIncluir()
+    public function getFormCadastro()
     {    	
     	$form['notas'] = Filme::getNotas();
     	$form['paises'] = Pais::all()->sortBy('nome')->lists('nome', 'id');
     	$form['generos'] = Genero::all()->sortBy('nome')->lists('nome', 'id');
     	
-    	return view('filmes.incluir', ['lista' => $form]);
+    	return view('filmes.cadastrar', ['lista' => $form]);
+    }
+    
+    public function getFormDetalhes($filmeId)
+    {
+    	$filme = Filme::findOrFail( $filmeId );
+    	
+    	return view('filmes.detalhes', compact('filme'));
+    }
+    
+    public function postSalvar(Request $request)
+    {
+    	$filme 	= Filme::findOrNew( $request->input('filme_id') );
+    	$genero = Genero::findOrFail( $request->input('genero_id') );
+    	$pais 	= Pais::findOrFail( $request->input('pais_id') );
+    	
+    	$filme->ano  = $request->input('ano');
+    	$filme->nome = $request->input('nome');
+    	$filme->nota = $request->input('nota');
+    	$filme->genero()->associate( $genero );
+    	$filme->pais()->associate( $pais );
+    	
+    	\DB::transaction(function() use ($filme){
+    		
+    		$filme->save();
+    		
+    	});
+    	
+    	return redirect('/');
+    }
+    
+    public function getDetalhes()
+    {
+    	
     }
 
 }
