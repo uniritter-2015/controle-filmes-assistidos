@@ -14,9 +14,10 @@ class CreateFilmesTable extends Migration {
 	{
 		Schema::create('filmes', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id');			
             $table->integer('genero_id')->unsigned();
             $table->integer('pais_id')->unsigned();
+            $table->integer('ano');
             $table->integer('visualizacao_id')->unsigned()->nullable();
             $table->string('nome')->unique();
             $table->float('nota');
