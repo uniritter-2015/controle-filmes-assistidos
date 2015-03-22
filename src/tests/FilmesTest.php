@@ -15,6 +15,13 @@ class FilmesTest extends \TestCase{
 		$this->assertEquals(200, $response->getStatusCode());
 	}
 	
+	public function testGetIncluirRequest()
+	{
+		$response = $this->call('GET', 'incluir');
+	
+		$this->assertEquals(200, $response->getStatusCode());
+	}
+	
 	public function testFilmeValidoDeveSerCriado()
 	{
 		$acao = Genero::findOrNew( 8 );
