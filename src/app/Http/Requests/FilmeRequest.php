@@ -22,7 +22,8 @@ class FilmeRequest extends Request {
 	public function rules()
 	{
         return [
-            'nome' => 'required|min:3',
+            'nome' => 'required|unique|min:3',
+        	'ano'	=> 'required',
             'nota' => 'required',
             'genero_id' => 'required',
             'pais_id' => 'required',
