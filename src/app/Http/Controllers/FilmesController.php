@@ -11,15 +11,13 @@ class FilmesController extends Controller {
     public function getIndex()
     {
         $filmes = Filme::latest('created_at')->get();
-
+		
         return view('filmes.index',compact('filmes'));
     }
-
-    public function detalhes($id)
-    {
-        $filme = Filme::findOrFail($id);
-
-        return view('filmes.detalhes', compact('filme'));
+    
+    public function getIncluir()
+    {    	
+    	return view('filmes.incluir', ['notas' => Filme::getNotas()]);
     }
 
 }
