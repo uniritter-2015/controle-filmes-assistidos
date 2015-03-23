@@ -42,9 +42,9 @@ class FilmesController extends Controller {
     	return view('filmes.detalhes', compact('filme'));
     }
     
-    public function postSalvar(Request $request)
+    public function postSalvar(Request $request, $filmeId = null)
     {
-    	$filme 	= Filme::findOrNew( $request->input('filme_id') );
+    	$filme 	= Filme::findOrNew( $filmeId );
     	$genero = Genero::findOrFail( $request->input('genero_id') );
     	$pais 	= Pais::findOrFail( $request->input('pais_id') );
     	
