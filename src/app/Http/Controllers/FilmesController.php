@@ -42,7 +42,6 @@ class FilmesController extends Controller {
     	$pais 	= Pais::findOrFail( $request->input('pais_id') );
     	
     	if( $request->hasFile('capa-filme') ){
-    		
     		$filme->setUploadFile( $request->file('capa-filme') );
     	}
     	
@@ -53,9 +52,7 @@ class FilmesController extends Controller {
     	$filme->pais()->associate( $pais );
     	
     	\DB::transaction(function() use ($filme){
-    		
     		$filme->save();
-    		
     	});
     	
     	return redirect('/');
@@ -66,9 +63,7 @@ class FilmesController extends Controller {
     	$filme 	= Filme::findOrFail( Input::get('filme_id') );
 
     	\DB::transaction(function() use ($filme){
-    	
     		$filme->delete();
-    	
     	});
     	
     	return response()->json(['success' => true]);
