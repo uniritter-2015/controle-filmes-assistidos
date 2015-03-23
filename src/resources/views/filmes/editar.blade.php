@@ -10,11 +10,13 @@
 	
 	<div class="row">
 		<div class="col-md-6">
-		{!! Form::model($filme, ['url' => 'salvar/'.$filme->id ]) !!}
-		{{-- Form::open(['url' => 'salvar', 'files' => true]) --}}
+		{!! Form::model($filme, ['url' => 'salvar/'.$filme->id, 'name' => 'form-editar-filme']) !!}		
 	    	@include('filmes.partials.filme_form')
-	    	 <div class="form-group">
-	        	{!! Form::submit('Atualizar Dados', ['class' => 'btn btn-sm btn-primary']) !!}
+	    	<div class="row">
+	    		<div class="col-md-12">
+			        	{!! Form::submit('Salvar', ['class' => 'btn btn-sm btn-primary']) !!}
+			        	{!! Form::submit('Excluir', ['name' => 'btn-excluir-filme', 'class' => 'btn btn-sm btn-primary btn-danger pull-right']) !!}
+	    		</div>
 	    	</div>
 	    {!! Form::close() !!}
 	    </div>
