@@ -26,6 +26,17 @@ class FilmesController extends Controller {
     	return view('filmes.cadastrar', ['lista' => $form]);
     }
     
+    public function getFormEditar($filmeId)
+    {
+    	$filme 	= Filme::findOrFail( $filmeId );
+    	
+    	$form['notas'] = Filme::getNotas();
+    	$form['paises'] = Pais::all()->sortBy('nome')->lists('nome', 'id');
+    	$form['generos'] = Genero::all()->sortBy('nome')->lists('nome', 'id');
+    	 
+    	return view('filmes.editar', ['lista' => $form, 'filme' => $filme]);
+    }
+    
     public function getFormDetalhes($filmeId)
     {
     	$filme = Filme::findOrFail( $filmeId );

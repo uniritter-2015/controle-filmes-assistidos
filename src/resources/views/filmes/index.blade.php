@@ -30,7 +30,7 @@
             			<td>{!! $filme->nota !!}</td>
             		</tr>
             	</table>
-                <a class="btn btn-primary" href="#">Editar</a>
+            	{!! Html::link(URL::to('form-editar', [$filme->id]), 'Editar', ['class' => 'btn btn-primary']) !!}
             </div>
         </div>	
 		<hr/>
