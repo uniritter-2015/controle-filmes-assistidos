@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Pais;
 use App\Genero;
 use App\Http\Requests\FilmeRequest;
+use Illuminate\Support\Facades\Input;
 
 class FilmesController extends Controller {
 
@@ -53,5 +54,18 @@ class FilmesController extends Controller {
     	});
     	
     	return redirect('/');
+    }
+    
+    public function postExcluir()
+    {
+    	$filme 	= Filme::findOrFail( Input::get('filme_id') );
+
+    	\DB::transaction(function() use ($filme){
+    	
+    		$filme->delete();
+    	
+    	});
+    	
+    	return response()->json(['success' => true, 'msg' => 'Filme excluído com sucesso!']);
     }
 }

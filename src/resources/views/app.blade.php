@@ -68,21 +68,25 @@
 
 				var $this = $(this);
 				var $formEditarFilme = $this.closest('form[name="form-editar-filme"]');
-				
-				debugger;
+				var filmeId = $this.attr('data-filme_id');
+				var token = $formEditarFilme.find('input[name=_token]').val();
 				
 				noty({
-					text: 'Deseja realmente excluir este filme??',
+					text: '<strong>DESEJA REALMENTE EXCLUIR ESTE FILME?</strong>',
+					type: 'warning',
 					buttons: [
 						{addClass: 'btn btn-primary', text: 'Sim', onClick: function($noty) {
 
-							alert('Implementar a exclusão');
-							/* $.post('excluir', {filme_id: filmeId, function( $response ){
+							$.post('/excluir', { filme_id: filmeId, _token: token }, function( $response ){
 
-								debugger;
-							}); */
-								
 								$noty.close();
+								if( $response.success ){
+
+									$(location).attr('href','/');
+								}
+								
+							});
+								
 							}
 						},
 						{addClass: 'btn btn-danger', text: 'Não', onClick: function($noty) {
