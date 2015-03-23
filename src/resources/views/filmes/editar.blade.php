@@ -14,8 +14,8 @@
 	    	@include('filmes.partials.filme_form')
 	    	<div class="row">
 	    		<div class="col-md-12">
-			        	{!! Form::submit('Salvar', ['class' => 'btn btn-sm btn-primary']) !!}
-			        	{!! Form::submit('Excluir', ['name' => 'btn-excluir-filme', 'data-filme_id' => $filme->id, 'class' => 'btn btn-sm btn-primary btn-danger pull-right']) !!}
+	    			{!! Form::submit('Salvar', ['class' => 'btn btn-sm btn-primary']) !!}
+	    			{!! Form::submit('Excluir', ['name' => 'btn-excluir-filme', 'data-filme_id' => $filme->id, 'class' => 'btn btn-sm btn-primary btn-danger pull-right']) !!}
 	    		</div>
 	    	</div>
 	    {!! Form::close() !!}
