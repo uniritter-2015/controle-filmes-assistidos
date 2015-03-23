@@ -7,34 +7,51 @@
 	<title>Controle de Filme Assistidos</title>
 
 	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/slate.theme.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/1-col-portfolio.css') }}">
 	
 </head>
 <body>
 
-	
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                {!! Html::link(URL::to('/'), 'Home', ['class' => 'navbar-brand']) !!}
+            </div>
 
-	<div class="container-fluid">
-      <div class="row">
-        
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Cadastrar <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Editar</a></li>
-            <li><a href="#">Pesquisar</a></li>
-          </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        {!! Html::link(URL::to('form-cadastro'), 'Cadastrar') !!}
+                    </li>
+                </ul>
+            </div>
+
         </div>
-        
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        @yield('content')
+
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">
+                	@yield('titulo-secao')
+                </h2>
+            </div>
         </div>
+        <!-- /.row -->
+
+        @yield('conteudo')
         
-       </div>
-      </div>
-
-    
-
-    @yield('footer')
+    </div>
 
 	<!-- Scripts -->
 	<script src="{{ asset('/js/jquery-2.1.3.min.js') }}"></script>
