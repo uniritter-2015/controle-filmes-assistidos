@@ -14,6 +14,11 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('nota', 'Imagem de Capa:') !!}
+        <input id="" type="file" name="capa-filme">
+    </div>
+    
+    <div class="form-group">
         {!! Form::label('genero_id', 'Gênero:') !!}
         {!! Form::select('genero_id', $lista['generos'], isset($filme) ? $filme->genero->id : 0, ['class' => 'form-control text-capitalize', 'required']) !!}
     </div>
