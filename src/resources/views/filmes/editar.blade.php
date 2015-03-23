@@ -10,7 +10,7 @@
 	
 	<div class="row">
 		<div class="col-md-6">
-		{!! Form::model($filme, ['url' => 'salvar/'.$filme->id, 'name' => 'form-editar-filme']) !!}		
+		{!! Form::model($filme, ['url' => 'salvar/'.$filme->id, 'name' => 'form-editar-filme', 'files' => true]) !!}		
 	    	@include('filmes.partials.filme_form')
 	    	<div class="row">
 	    		<div class="col-md-12">

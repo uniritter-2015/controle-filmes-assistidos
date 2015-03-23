@@ -41,6 +41,11 @@ class FilmesController extends Controller {
     	$genero = Genero::findOrFail( $request->input('genero_id') );
     	$pais 	= Pais::findOrFail( $request->input('pais_id') );
     	
+    	if( $request->hasFile('capa-filme') ){
+    		
+    		$filme->setUploadFile( $request->file('capa-filme') );
+    	}
+    	
     	$filme->ano  = $request->input('ano');
     	$filme->nome = $request->input('nome');
     	$filme->nota = $request->input('nota');
@@ -66,6 +71,6 @@ class FilmesController extends Controller {
     	
     	});
     	
-    	return response()->json(['success' => true, 'msg' => 'Filme excluído com sucesso!']);
+    	return response()->json(['success' => true]);
     }
 }
