@@ -18,6 +18,7 @@ class CreateFilmesTable extends Migration {
             $table->integer('genero_id')->unsigned();
             $table->integer('pais_id')->unsigned();
             $table->integer('ano');
+            $table->text('imagem');
             $table->integer('visualizacao_id')->unsigned()->nullable();
             $table->string('nome')->unique();
             $table->float('nota');
