@@ -1,12 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\Filme;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
 use App\Pais;
 use App\Genero;
+use App\Http\Requests\FilmeRequest;
 
 class FilmesController extends Controller {
 
@@ -35,14 +34,7 @@ class FilmesController extends Controller {
     	return view('filmes.editar', ['lista' => $form, 'filme' => $filme]);
     }
     
-    public function getFormDetalhes($filmeId)
-    {
-    	$filme = Filme::findOrFail( $filmeId );
-    	
-    	return view('filmes.detalhes', compact('filme'));
-    }
-    
-    public function postSalvar(Request $request, $filmeId = null)
+    public function postSalvar(FilmeRequest $request, $filmeId = null)
     {
     	$filme 	= Filme::findOrNew( $filmeId );
     	$genero = Genero::findOrFail( $request->input('genero_id') );
