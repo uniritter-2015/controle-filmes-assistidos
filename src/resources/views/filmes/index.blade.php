@@ -15,7 +15,7 @@
                 </a>
             </div>
             <div class="col-md-5">
-            	<h3 class="text-capitalize">{!! $filme->nome !!}</h3>
+            	<h3 style="margin-top: 0" class="text-capitalize">{!! $filme->nome !!}</h3>
             	<table>
             		<tr>
             			<td>Gênero:&nbsp;</td>
@@ -26,11 +26,15 @@
             			<td class="text-capitalize">{!! $filme->pais->nome !!}</td>
             		</tr>
             		<tr>
+            			<td>Ano:&nbsp;</td>
+            			<td class="text-capitalize">{!! $filme->ano !!}</td>
+            		</tr>
+            		<tr>
             			<td>Nota:&nbsp;</td>
             			<td>{!! $filme->nota !!}</td>
             		</tr>
             	</table>
-            	{!! Html::link(URL::to('form-editar', [$filme->id]), 'Editar', ['class' => 'btn btn-primary']) !!}
+            	{!! Html::link(URL::to('form-editar', [$filme->id]), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
             </div>
         </div>	
 		<hr/>
