@@ -1,3 +1,12 @@
 <?php
+	
+	//Route::controller('/omdb/', 'OmdbController');
 
-Route::controller('/', 'FilmesController');
+	Route::get('/omdb', function()
+	{
+		return view('omdb.index');
+	});
+	
+	
+	Route::controller('/', 'FilmesController');
+?>

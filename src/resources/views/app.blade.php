@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,8 +57,8 @@
 	<script src="{{ asset('/js/jquery-2.1.3.min.js') }}"></script>
 	<script src="{{ asset('/js/twitterbootstrap/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('/js/jquery.noty.packaged.min.js') }}"></script>
-	<script src="{{ asset('/js/jquery.noty.packaged.min.js') }}"></script>
 	<script src="{{ asset('/js/angular.min.js') }}"></script>
+	<script src="{{ asset('/js/scripts.js') }}"></script>
 	<script src="{{ asset('/js/angular.min.js.map') }}"></script>
 	
 	<script type="text/javascript">
