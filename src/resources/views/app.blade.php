@@ -56,5 +56,45 @@
 	<!-- Scripts -->
 	<script src="{{ asset('/js/jquery-2.1.3.min.js') }}"></script>
 	<script src="{{ asset('/js/twitterbootstrap/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('/js/jquery.noty.packaged.min.js') }}"></script>
+	
+	<script type="text/javascript">
+
+		$(function(){
+
+			$('body').on('click', 'input:submit[name="btn-excluir-filme"]', function( $event ){
+
+				$event.preventDefault();
+
+				var $this = $(this);
+				var $formEditarFilme = $this.closest('form[name="form-editar-filme"]');
+				
+				debugger;
+				
+				noty({
+					text: 'Deseja realmente excluir este filme??',
+					buttons: [
+						{addClass: 'btn btn-primary', text: 'Sim', onClick: function($noty) {
+
+							alert('Implementar a exclusão');
+							/* $.post('excluir', {filme_id: filmeId, function( $response ){
+
+								debugger;
+							}); */
+								
+								$noty.close();
+							}
+						},
+						{addClass: 'btn btn-danger', text: 'Não', onClick: function($noty) {
+								$noty.close();
+							}
+						}
+					]
+				});	
+			});
+			
+		});
+
+	</script>
 </body>
 </html>
