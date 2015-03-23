@@ -19,7 +19,6 @@ class FilmesController extends Controller {
     
     public function getFormCadastro()
     {    	
-    	$form['notas'] = Filme::getNotas();
     	$form['paises'] = Pais::all()->sortBy('nome')->lists('nome', 'id');
     	$form['generos'] = Genero::all()->sortBy('nome')->lists('nome', 'id');
     	
@@ -30,7 +29,6 @@ class FilmesController extends Controller {
     {
     	$filme 	= Filme::findOrFail( $filmeId );
     	
-    	$form['notas'] = Filme::getNotas();
     	$form['paises'] = Pais::all()->sortBy('nome')->lists('nome', 'id');
     	$form['generos'] = Genero::all()->sortBy('nome')->lists('nome', 'id');
     	 
@@ -64,10 +62,4 @@ class FilmesController extends Controller {
     	
     	return redirect('/');
     }
-    
-    public function getDetalhes()
-    {
-    	
-    }
-
 }
