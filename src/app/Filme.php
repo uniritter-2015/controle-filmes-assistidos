@@ -14,12 +14,12 @@ class Filme extends Model {
     {
     	parent::boot();
     	
-    	static::created(function(Filme $filme){
+    	static::saved(function(Filme $filme){
     		
     		$file = $filme->getUploadFile();
-    		$imagem = $filme->imagem;
-    		
-    		$file->move( 'capas/', $file->getClientOriginalName() );
+    		if( !is_null( $file ) ){
+    			$file->move( 'capas/', $file->getClientOriginalName() );
+    		}
     		
     	});
     }
