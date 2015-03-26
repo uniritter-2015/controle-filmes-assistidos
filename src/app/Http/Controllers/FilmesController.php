@@ -12,9 +12,11 @@ class FilmesController extends Controller {
 
     public function getIndex()
     {
-        $filmes = Filme::latest('created_at')->get();
+        $form = [];
+        $form['filmes'] = Filme::latest('created_at')->get();
+        $form['criterios'] = ['nome' => 'título']; 
 		
-        return view('filmes.index',compact('filmes'));
+        return view('filmes.index', ['lista' => $form]);
     }
     
     public function getFormCadastro()
@@ -33,6 +35,17 @@ class FilmesController extends Controller {
     	$form['generos'] = Genero::all()->sortBy('nome')->lists('nome', 'id');
     	 
     	return view('filmes.editar', ['lista' => $form, 'filme' => $filme]);
+    }
+    
+    public function getPesquisar()
+    {
+    	$filmes = Filme::where( Input::get('criterio'),'LIKE', '%'. Input::get('valor'). '%' )->get();
+    	
+    	$form = [];
+        $form['filmes'] = $filmes;
+        $form['criterios'] = ['nome' => 'título'];
+        
+    	return view('filmes.index', ['lista' => $form]);
     }
     
     public function postSalvar(FilmeRequest $request, $filmeId = null)
