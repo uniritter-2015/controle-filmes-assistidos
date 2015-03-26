@@ -23,11 +23,8 @@ class FilmeRequest extends Request {
 	{
         return [
             'nome' => 'required|min:3',
-        	'ano'	=> 'required|min:4',
-            'nota' => 'required',
             'genero_id' => 'required',
-            'pais_id' => 'required',
-           // 'imagem' => 'required|mimes:jpeg,jpg,png'
+            'pais_id' => 'required'
         ];
 	}
 

@@ -14,13 +14,27 @@ class Filme extends Model {
     {
     	parent::boot();
     	
+    	static::updating(function(Filme $filme){
+    		
+    		$file = $filme->getUploadFile();
+    		if( !is_null( $file ) ){
+    			
+    			$imagemAnterior = Filme::findOrFail( $filme->id )->imagem; 
+    			return \File::delete( $imagemAnterior );
+    		}
+    	});
+    	
     	static::saved(function(Filme $filme){
     		
     		$file = $filme->getUploadFile();
     		if( !is_null( $file ) ){
     			$file->move( 'capas/', $file->getClientOriginalName() );
     		}
+    	});
+    	
+    	static::deleted(function(Filme $filme){
     		
+    		return \File::delete( $filme->imagem );
     	});
     }
     
@@ -37,7 +51,7 @@ class Filme extends Model {
     
     public function setImagemAttribute($imagem)
     {
-    	$this->attributes['imagem'] = '/capas/'.trim($imagem);
+    	$this->attributes['imagem'] = 'capas/'.trim($imagem);
     } 
     
     
