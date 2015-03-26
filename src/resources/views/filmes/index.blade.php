@@ -8,7 +8,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-		{!! Form::open(['url' => 'pesquisar', 'method' => 'GET', 'class' => 'navbar-form navbar-left role="search']) !!}
+		{!! Form::open(['url' => '/', 'method' => 'GET', 'class' => 'navbar-form navbar-left role="search']) !!}
 	    	@include('filmes.partials.pesquisar_form')
 	    	 <div class="form-group">
 	        	{!! Form::submit('Pesquisar', ['class' => 'btn btn-sm btn-primary']) !!}
