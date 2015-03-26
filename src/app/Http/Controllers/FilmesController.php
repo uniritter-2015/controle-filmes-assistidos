@@ -39,7 +39,7 @@ class FilmesController extends Controller {
     
     public function getPesquisar()
     {
-    	$filmes = Filme::where( Input::get('criterio'),'LIKE', '%'. Input::get('valor'). '%' )->get();
+    	$filmes = Filme::where( Input::get('criterio'),'LIKE', '%'. Input::get('valor'). '%' )->latest('created_at')->get();
     	
     	$form = [];
         $form['filmes'] = $filmes;
