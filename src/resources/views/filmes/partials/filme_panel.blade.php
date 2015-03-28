@@ -6,7 +6,7 @@
     		<div class="col-md-10" style="cursor: pointer" data-toggle="collapse" data-target="#collapse{{$filme->id}}">
 	          <table>
 	          	<tr>
-	          		<td rowspan="5"><img style="padding: 5px;" alt="" src="" width="100" height="120"></td>
+	          		<td rowspan="5"><img style="padding: 5px;" alt="" src="{{ $filme->imagem }}" width="100" height="120"></td>
 	          	</tr>
 	          	<tr>
 	          		<td class="text-capitalize"><label>Título:</label> {{ $filme->nome }}</td>
