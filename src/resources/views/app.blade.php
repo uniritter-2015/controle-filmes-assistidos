@@ -9,6 +9,14 @@
 	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/1-col-portfolio.css') }}">
 	
+	<style type="text/css">
+	
+		table.botoes-acao { position: relative; margin-top: 5px; }
+		table.botoes-acao td { padding-bottom: 3px }
+		table.botoes-acao input { width: 90px }
+		
+	</style>
+	
 </head>
 <body>
 

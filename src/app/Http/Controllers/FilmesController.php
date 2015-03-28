@@ -23,7 +23,7 @@ class FilmesController extends Controller {
     	}
     	
         $form = [];
-        $form['filmes'] = $filmesBuilder;
+        $form['filmes'] = $filmesBuilder->get();
         $form['criterios'] = ['nome' => 'título']; 
 		
         return view('filmes.index', ['lista' => $form]);
