@@ -12,14 +12,18 @@ class FilmesController extends Controller {
 
     public function getIndex()
     {
-    	if( Input::has('criterio') ){
-    		$filmes = Filme::where( Input::get('criterio'),'LIKE', '%'. Input::get('valor'). '%' )->latest('created_at')->get();
-    	}else{
-    		$filmes = Filme::latest('created_at')->get();
+    	$filmesBuilder = Filme::where( \DB::raw('1'),'1');
+    	
+    	if( Input::has('nome') ){
+    		$filmesBuilder = $filmesBuilder->where( 'nome','LIKE', '%'. Input::get('nome'). '%' )->latest('created_at');
+    		
+    	}
+    	if( Input::has('nota') ){
+    		$filmesBuilder = $filmesBuilder->where('nota', Input::get('nota'))->get();
     	}
     	
         $form = [];
-        $form['filmes'] = $filmes;
+        $form['filmes'] = $filmesBuilder;
         $form['criterios'] = ['nome' => 'título']; 
 		
         return view('filmes.index', ['lista' => $form]);

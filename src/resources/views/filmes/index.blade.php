@@ -5,7 +5,7 @@
 @stop
 
 @section('conteudo')
-
+	
 	<div class="row">
 		<div class="col-md-12">
 		{!! Form::open(['url' => '/', 'method' => 'GET', 'class' => 'navbar-form navbar-left role="search']) !!}
@@ -23,9 +23,7 @@
 			
 				<div class="row">
 		            <div class="col-md-3">
-		                <a href="#">
-		                	<img alt="" width="100%" height="150" src="{{ $filme->imagem }}">
-		                </a>
+		                	<img src="data:{{ $filme->ext }};base64,{{ $filme->imagem }}" width="100%" height="150"/>
 		            </div>
 		            <div class="col-md-5">
 		            
