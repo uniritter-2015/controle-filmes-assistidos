@@ -25,7 +25,7 @@
 		    <div class="col-md-2">
 		    	<table class="botoes-acao">
 		          	<tr>
-		          		<td><input class="btn btn-md btn-success" type="button" value="Comentar"></td>
+		          		<td><input class="btn btn-md btn-default" type="button" value="Comentar"></td>
 		          	</tr>
 		          	<tr>
 		          		<td><input class="btn btn-md btn-warning" type="button" value="Editar"></td>
@@ -39,7 +39,36 @@
     </div>
     <div id="collapse{{$filme->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      	
+      	
+      	<table class="table table-bordered">
+      		<tr>
+      			<td class="text-center"><label>Comentário</label></td>
+      			<td class="text-center"><label>Com Quem</label></td>
+      			<td class="text-center"><label>Local</label></td>
+      			<td class="text-center"><label>Data</label></td>
+      			<td class="text-center"><label>Ações</label></td>
+      		</tr>
+      		<tr valign="middle">
+      			<td width="30">
+      				FGO NǴONSDFǴNFfǵo nsdfǵosdnfǵ osdifng sdfog nsdgoisdfgósidfng  ríofg sfdǵosidf śofid sdfg fdóg isdfǵoisdfǵo isdfgóisdf gśodfig fg oasdnfóasd
+      			</td>
+      			<td width="10">
+      				Meu melhor amigo
+      			</td>
+      			<td width="10">
+      				Na sala
+      			</td>
+      			<td width="10">
+      				09/04/2011
+      			</td>
+      			<td width="10" valign="middle" class="text-center">
+      				<input class="btn btn-sm btn-warning" type="button" value="Editar">
+      				<input class="btn btn-sm btn-danger" type="button" value="Excluir">
+      			</td>
+      		</tr>
+		</table>
+        
       </div>
     </div>
   </div>
