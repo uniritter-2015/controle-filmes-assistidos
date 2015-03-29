@@ -70,9 +70,9 @@ class FilmesController extends Controller {
     	return redirect('/');
     }
     
-    public function postExcluir()
+    public function postExcluir( $filmeId )
     {
-    	$filme 	= Filme::findOrFail( Input::get('filme_id') );
+    	$filme 	= Filme::findOrFail( $filmeId );
 
     	\DB::transaction(function() use ($filme){
     		$filme->delete();

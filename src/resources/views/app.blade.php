@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        {!! Html::link(URL::to('form-cadastro'), 'Cadastrar') !!}
+                        {!! Html::link(URL::to('form-cadastro'), 'Novo Filme') !!}
                     </li>
                 </ul>
             </div>
@@ -73,14 +73,12 @@
 
 		$(function(){
 
-			$('body').on('click', 'input:submit[name="btn-excluir-filme"]', function( $event ){
-
+			$('body').on('click', 'a[name="excluir-filme"]', function( $event ){
+				debugger;
 				$event.preventDefault();
 
 				var $this = $(this);
-				var $formEditarFilme = $this.closest('form[name="form-editar-filme"]');
-				var filmeId = $this.attr('data-filme_id');
-				var token = $formEditarFilme.find('input[name=_token]').val();
+				var url = $this.attr('href');
 				
 				noty({
 					text: '<strong>DESEJA REALMENTE EXCLUIR ESTE FILME?</strong>',
@@ -88,7 +86,7 @@
 					buttons: [
 						{addClass: 'btn btn-primary', text: 'Sim', onClick: function($noty) {
 
-							$.post('/excluir', { filme_id: filmeId, _token: token }, function( $response ){
+							$.post(url, null, function( $response ){
 
 								$noty.close();
 								if( $response.success ){
