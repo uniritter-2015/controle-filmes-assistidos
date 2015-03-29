@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Input;
 class FilmesController extends Controller {
 
     public function getIndex()
-    { 
-		//linha de teste
+    {
     	$filmesBuilder = Filme::where( \DB::raw('1'),'1');
     	
     	if( Input::has('nome') ){
