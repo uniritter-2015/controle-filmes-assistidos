@@ -14,29 +14,18 @@ class CreateFilmesTable extends Migration {
 	{
 		Schema::create('filmes', function(Blueprint $table)
 		{
-			$table->increments('id');			
-            $table->integer('genero_id')->unsigned();
+			$table->increments('id');
             $table->integer('pais_id')->unsigned();
-            $table->integer('visualizacao_id')->nullable()->unsigned();
-            
-            $table->integer('ano')->nullable();
-            $table->binary('imagem')->nullable();
-            $table->text('ext')->nullable();
             $table->string('nome')->unique();
-            $table->float('nota');
+            $table->integer('ano');
+            $table->string('imagem', 255)->nullable();
+            $table->text('ext')->nullable();
+            $table->integer('nota');
 			$table->timestamps();
-
-            $table->foreign('genero_id')
-                ->references('id')
-                ->on('generos');
 
             $table->foreign('pais_id')
                 ->references('id')
                 ->on('paises');
-
-            $table->foreign('visualizacao_id')
-                ->references('id')
-                ->on('visualizacoes');
 		});
 	}
 

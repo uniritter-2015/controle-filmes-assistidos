@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComentariosTable extends Migration {
+class CreateVisualizacoesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,14 @@ class CreateComentariosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('comentarios', function(Blueprint $table)
+		Schema::create('visualizacoes', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->text('comentario');
             $table->integer('filme_id')->unsigned();
+            $table->text('comentario');
+            $table->date('data_visto');
+            $table->string('local_visto', 255);
+            $table->string('com_quem', 255);
 			$table->timestamps();
 
             $table->foreign('filme_id')
@@ -32,7 +35,7 @@ class CreateComentariosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('comentarios');
+		Schema::drop('visualizacoes');
 	}
 
 }
