@@ -21,3 +21,5 @@ src/vendor/composer/autoload_classmap.php
 src/vendor/composer/autoload_files.php
 src/vendor/composer/autoload_real.php
 src/vendor/composer/include_paths.php
+src/vendor/autoload.php
+src/vendor/autoload.php
