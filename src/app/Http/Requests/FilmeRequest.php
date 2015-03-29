@@ -25,7 +25,7 @@ class FilmeRequest extends Request {
         	'genero_id' => 'required',
             'nome' => 'required|min:3',            
         	'ano' => 'required',
-        	'nota' => 'required',
+        	'nota' => 'required|not_in:0',
         	'data' => 'required'
         ];
 	}
