@@ -54,6 +54,9 @@
                 <h2 class="page-header">
                 	@yield('titulo-secao')
                 </h2>
+                <h3>
+                	@yield('subtitulo-secao')
+                </h3>
             </div>
         </div>
         <!-- /.row -->
