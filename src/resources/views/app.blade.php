@@ -15,7 +15,7 @@
 		table.botoes-acao td { padding-bottom: 3px }
 		table.botoes-acao .btn { width: 115px }
 		.btn-warning { color: #000000; background-color: rgba(255, 223, 0, 1); border-color: #eea236; }
-		
+		.req { color: red }
 	</style>
 	
 </head>

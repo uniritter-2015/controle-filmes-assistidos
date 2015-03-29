@@ -13,7 +13,8 @@
         {!! Form::text('local', null, ['class' => 'form-control']) !!}
     </div>
     
-    <div class="form-group">
+    <div class="form-group">    	
 	    {!! Form::label('data', 'Data:') !!}
+	    <span class="req">*</span>
 	    {!! Form::input('date', 'data', null, ['class' => 'form-control']) !!}
     </div>
