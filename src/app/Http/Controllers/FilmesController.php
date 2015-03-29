@@ -30,21 +30,25 @@ class FilmesController extends Controller {
     }
     
     public function getFormCadastro()
-    {    	
+    {   
+    	$form['notas'] = ['', 0,1,2,3,4,5];
     	$form['paises'] = Pais::all()->sortBy('nome')->lists('nome', 'id');
     	$form['generos'] = Genero::all()->sortBy('nome')->lists('nome', 'id');
     	
-    	return view('filmes.cadastrar', ['lista' => $form]);
+    	array_unshift($form['paises'], '');
+    	
+    	return view('filmes.cadastrar', $form);
     }
     
     public function getFormEditar($filmeId)
     {
     	$filme 	= Filme::findOrFail( $filmeId );
     	
+    	$form['notas'] = ['', 0,1,2,3,4,5];
     	$form['paises'] = Pais::all()->sortBy('nome')->lists('nome', 'id');
     	$form['generos'] = Genero::all()->sortBy('nome')->lists('nome', 'id');
     	 
-    	return view('filmes.editar', ['lista' => $form, 'filme' => $filme]);
+    	return view('filmes.editar', [$form, 'filme' => $filme]);
     }
     
     public function postSalvar(FilmeRequest $request, $filmeId = null)

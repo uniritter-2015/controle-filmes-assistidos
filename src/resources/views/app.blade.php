@@ -8,6 +8,7 @@
 
 	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/1-col-portfolio.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/chosen.min.css') }}">
 	
 	<style type="text/css">
 	
@@ -69,6 +70,7 @@
 	<script src="{{ asset('/js/jquery-2.1.3.min.js') }}"></script>
 	<script src="{{ asset('/js/twitterbootstrap/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('/js/jquery.noty.packaged.min.js') }}"></script>
+	<script src="{{ asset('/js/chosen.jquery.min.js') }}"></script>
 	<!-- <script src="{{ asset('/js/angular.min.js') }}"></script> -->
 	<!-- <script src="{{ asset('/js/scripts.js') }}"></script> -->
 	<!-- <script src="{{ asset('/js/angular.min.js.map') }}"></script> -->
@@ -77,6 +79,11 @@
 
 		$(function(){
 
+			$('.chosen-select').chosen({
+				placeholder_text_single: "Selecione",
+				placeholder_text_multiple: "Selecione vários"
+			  });
+			
 			$('body').on('click', 'a[name="excluir-filme"]', function( $event ){
 				
 				$event.preventDefault();
