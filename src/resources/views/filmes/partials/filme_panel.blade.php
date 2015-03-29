@@ -12,7 +12,7 @@
 	          		<td><label>Título:</label><span class="text-uppercase"> {{ $filme->nome }}</span></td>
 	          	</tr>
 	          	<tr>
-	          		<td class="text-capitalize"><label>Gênero:</label> {{ $filme->genero->nome }}</td>
+	          		<td class="text-capitalize"><label>Gênero:</label> {{ Form::listarGenerosDoFilme($filme->generos->all()) }}</td>
 	          	</tr>
 	          	<tr>
 	          		<td class="text-capitalize"><label>Visto em:</label> 08/09/2013</td>
