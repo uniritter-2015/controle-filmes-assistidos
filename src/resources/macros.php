@@ -4,12 +4,10 @@ Form::macro('selectNotas', function($name, $default)
 {
 	$html  = '<select required="required" class="form-control" name="' .$name. '">';
 	
-	for ($key = -1; $key <= 5; $key++) {
+	$html .= sprintf('<option %s value="-1">Selecione</option>', ($default == -1) ? 'selected = "selected"' : '');
+	for ($key = 0; $key <= 5; $key++) {
 		
-		$selecionado = ($key == $default) ? 'selected = "selected"' : '';
-		$texto = ($key == -1) ? 'Selecione' : $key;
-		
-		$html .= sprintf('<option %s value="%s">%s</option>', $selecionado, $key, $texto);
+		$html .= sprintf('<option %s value="%s">%s</option>', ($key == $default) ? 'selected = "selected"' : '', $key, $key);
 	}
 	
 	$html .= '</select>';
@@ -20,13 +18,11 @@ Form::macro('selectNotas', function($name, $default)
 Form::macro('selectGeneros', function($name, Array $generos, $default)
 {
 	$html  = '<select required="required" class="form-control text-capitalize" name="' .$name. '">';
-		
+	
+	$html .= sprintf('<option %s value="0">Selecione</option>', ($default == 0) ? 'selected = "selected"' : '');
 	foreach ($generos as $key => $genero) {
 		
-		$selecionado = ($key == $default) ? 'selected = "selected"' : '';
-		$texto = ($key == 0) ? 'Selecione' : $genero;
-		
-		$html .= sprintf('<option %s value="%s">%s</option>', $selecionado, $key, $texto);
+		$html .= sprintf('<option %s value="%s">%s</option>', ($key == $default) ? 'selected = "selected"' : '', $key, $genero);
 	}
 	
 	$html .= '</select>';
@@ -36,16 +32,14 @@ Form::macro('selectGeneros', function($name, Array $generos, $default)
 
 Form::macro('selectPaises', function($name, Array $paises, $default)
 {
-	$html  = '<select class="form-control text-capitalize" name="' .$name. '">';
-
+	$html  = '<select required="required" class="form-control text-capitalize" name="' .$name. '">';
+	
+	$html .= sprintf('<option %s value="0">Selecione</option>', ($default == 0) ? 'selected = "selected"' : '');
 	foreach ($paises as $key => $pais) {
-
-		$selecionado = ($key == $default) ? 'selected = "selected"' : '';
-		$texto = ($key == 0) ? 'Selecione' : $pais;
-
-		$html .= sprintf('<option %s value="%s">%s</option>', $selecionado, $key, $texto);
+		
+		$html .= sprintf('<option %s value="%s">%s</option>', ($key == $default) ? 'selected = "selected"' : '', $key, $pais);
 	}
-
+	
 	$html .= '</select>';
 
 	return $html;
