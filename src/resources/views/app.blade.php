@@ -14,6 +14,7 @@
 		table.botoes-acao { position: relative; margin-top: 10px; }
 		table.botoes-acao td { padding-bottom: 3px }
 		table.botoes-acao .btn { width: 115px }
+		.btn-warning { color: #000000; background-color: rgba(255, 223, 0, 1); border-color: #eea236; }
 		
 	</style>
 	
@@ -74,7 +75,7 @@
 		$(function(){
 
 			$('body').on('click', 'a[name="excluir-filme"]', function( $event ){
-				debugger;
+				
 				$event.preventDefault();
 
 				var $this = $(this);
