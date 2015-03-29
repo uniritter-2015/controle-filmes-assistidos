@@ -11,9 +11,9 @@
 	
 	<style type="text/css">
 	
-		table.botoes-acao { position: relative; margin-top: 5px; }
+		table.botoes-acao { position: relative; margin-top: 10px; }
 		table.botoes-acao td { padding-bottom: 3px }
-		table.botoes-acao input { width: 90px }
+		table.botoes-acao .btn { width: 115px }
 		
 	</style>
 	
