@@ -18,7 +18,7 @@
 
     <div class="form-group">
         {!! Form::label('capa-filme', 'Imagem de Capa:') !!}
-        {!! Form::file('capa-filme', array('class' => '-form-control')) !!}
+        {!! Form::file('capa-filme', array('class' => 'form-control')) !!}
     </div>
     
     <div class="form-group">
