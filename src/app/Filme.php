@@ -55,9 +55,9 @@ class Filme extends Model {
     } 
     
     
-    public function genero()
+    public function generos()
     {
-        return $this->belongsTo('App\Genero');
+        return $this->belongsToMany('App\Genero');
     }
 
     public function pais()

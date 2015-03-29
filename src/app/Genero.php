@@ -8,7 +8,7 @@ class Genero extends Model {
 
     public function filme()
     {
-        return $this->hasMany('App\Filme');
+        return $this->belongsToMany('App\Filme');
     }
 
 }
