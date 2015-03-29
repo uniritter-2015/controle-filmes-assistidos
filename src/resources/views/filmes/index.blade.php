@@ -23,6 +23,6 @@
 				@include('filmes.partials.filme_panel')
 			@endforeach
 		</div>
-	</div>	
+	</div>
 
 @stop
