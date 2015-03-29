@@ -85,7 +85,8 @@
 					text: '<strong>DESEJA REALMENTE EXCLUIR ESTE FILME?</strong>',
 					type: 'warning',
 					buttons: [
-						{addClass: 'btn btn-primary', text: 'Sim', onClick: function($noty) {
+						{
+							addClass: 'btn btn-primary', text: 'Sim', onClick: function($noty) {
 
 							$.post(url, null, function( $response ){
 
@@ -99,9 +100,9 @@
 								
 							}
 						},
-						{addClass: 'btn btn-danger', text: 'Não', onClick: function($noty) {
-								$noty.close();
-							}
+						{
+							addClass: 'btn btn-danger', text: 'Não',
+							onClick: function($noty) { $noty.close(); }
 						}
 					]
 				});	

@@ -6,7 +6,7 @@
     		<div class="col-md-10" style="cursor: pointer" data-toggle="collapse" data-target="#collapse{{$filme->id}}">
 	          <table>
 	          	<tr>
-	          		<td rowspan="5"><img style="padding: 5px;" alt="" src="{{ $filme->imagem }}" width="110" height="120"></td>
+	          		<td rowspan="5"><img style="padding: 5px;margin-right: 10px;" alt="" src="{{ $filme->imagem }}" width="110" height="120"></td>
 	          	</tr>
 	          	<tr>
 	          		<td><label>Título:</label><span class="text-uppercase"> {{ $filme->nome }}</span></td>
@@ -25,13 +25,13 @@
 		    <div class="col-md-2">
 		    	<table class="botoes-acao">		          	
 		          	<tr>
-		          		<td>{!! Html::link(URL::to('form-editar', [$filme->id]), 'Editar', ['title' => 'Editar dados do filme', 'class' => 'btn btn-sm btn-warning']) !!}</td>
+		          		<td>{!! Html::link(URL::to('form-editar', [$filme->id]), 'Editar', ['title' => 'Editar dados do filme', 'class' => 'btn btn-sm btn-default']) !!}</td>
 		          	</tr>
 		          	<tr>
-		          		<td>{!! Html::link(URL::to('excluir', [$filme->id]), 'Excluir', ['title' => 'Excluir filme', 'name' => "excluir-filme", 'class' => 'btn btn-sm btn-danger']) !!}</td>
+		          		<td>{!! Html::link(URL::to('excluir', [$filme->id]), 'Excluir', ['title' => 'Excluir filme', 'name' => "excluir-filme", 'class' => 'btn btn-sm btn-default']) !!}</td>
 		          	</tr>
 		          	<tr>
-		          		<td>{!! Html::link(URL::to('form-comentario', [$filme->id]), 'Novo Comentário', ['title' => 'Adicionar comentário', 'class' => 'btn btn-sm btn-default']) !!}</td>
+		          		<td>{!! Html::link(URL::to('comentario/form-cadastro', [$filme->id]), 'Novo Comentário', ['title' => 'Adicionar comentário', 'class' => 'btn btn-sm btn-default']) !!}</td>
 		          	</tr>
 	          	</table>
 		    </div>
@@ -53,7 +53,7 @@
       				FGO NǴONSDFǴNFfǵo nsdfǵosdnfǵ osdifng sdfog nsdgoisdfgósidfng  ríofg sfdǵosidf śofid sdfg fdóg isdfǵoisdfǵo isdfgóisdf gśodfig fg oasdnfóasd
       			</td>
       			<td width="10">
-      				Meu melhor amigo
+      				Filha da vizinha
       			</td>
       			<td width="10">
       				Na sala
@@ -62,8 +62,8 @@
       				09/04/2011
       			</td>
       			<td width="10" valign="middle" class="text-center">
-      				{!! Html::link(URL::to('editar-comentario', [$filme->id]), 'Editar', ['title' => 'Edtar comentário', 'class' => 'btn btn-sm btn-warning']) !!}
-      				{!! Html::link(URL::to('excluir-comentario', [$filme->id]), 'Excluir', ['title' => 'Excluir comentário', 'class' => 'btn btn-sm btn-danger']) !!}
+      				{!! Html::link(URL::to('editar-comentario', [$filme->id]), 'Editar', ['title' => 'Edtar comentário', 'class' => 'btn btn-sm btn-default']) !!}
+      				{!! Html::link(URL::to('excluir-comentario', [$filme->id]), 'Excluir', ['title' => 'Excluir comentário', 'class' => 'btn btn-sm btn-default']) !!}
       			</td>
       		</tr>
 		</table>
