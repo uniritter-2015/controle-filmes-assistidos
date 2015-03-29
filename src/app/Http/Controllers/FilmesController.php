@@ -7,6 +7,7 @@ use App\Pais;
 use App\Genero;
 use App\Http\Requests\FilmeRequest;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Database\Eloquent\Collection;
 
 class FilmesController extends Controller {
 
@@ -31,31 +32,40 @@ class FilmesController extends Controller {
     
     public function getFormCadastro()
     {   
-    	$form['notas'] = ['', 0,1,2,3,4,5];
-    	$form['paises'] = Pais::all()->sortBy('nome')->lists('nome', 'id');
-    	$form['generos'] = Genero::all()->sortBy('nome')->lists('nome', 'id');
+    	$notas = ['', 1,2,3,4,5];
+    	$paises = Pais::all()->sortBy('nome')->lists('nome', 'id');
+    	$generos = Genero::all()->sortBy('nome')->lists('nome', 'id');
     	
-    	array_unshift($form['paises'], '');
+    	array_unshift($paises, '');
     	
-    	return view('filmes.cadastrar', $form);
+    	return view('filmes.cadastrar', compact('notas', 'paises', 'generos'));
     }
     
     public function getFormEditar($filmeId)
     {
     	$filme 	= Filme::findOrFail( $filmeId );
     	
-    	$form['notas'] = ['', 0,1,2,3,4,5];
-    	$form['paises'] = Pais::all()->sortBy('nome')->lists('nome', 'id');
-    	$form['generos'] = Genero::all()->sortBy('nome')->lists('nome', 'id');
-    	 
-    	return view('filmes.editar', [$form, 'filme' => $filme]);
+    	$notas = ['', 1,2,3,4,5];
+    	$paises = Pais::all()->sortBy('nome')->lists('nome', 'id');
+    	$generos = Genero::all()->sortBy('nome')->lists('nome', 'id');
+    	$generosSelecionados = $filme->generos->modelKeys();
+    	
+    	array_unshift($paises, '');
+    	
+    	return view('filmes.editar', compact('notas', 'paises', 'generos', 'generosSelecionados', 'filme'));
     }
     
     public function postSalvar(FilmeRequest $request, $filmeId = null)
     {
     	$filme 	= Filme::findOrNew( $filmeId );
-    	$genero = Genero::findOrFail( $request->input('genero_id') );
-    	$pais 	= Pais::findOrFail( $request->input('pais_id') );
+    	$generos = Genero::findOrFail( $request->input('genero_id') );
+    	
+    	
+    	if( Input::get('pais_id') != 0 ){
+    		
+    		$pais = Pais::findOrFail( $request->input('pais_id') );
+    		$filme->pais()->associate( $pais );
+    	}
     	
     	if( $request->hasFile('capa-filme') ){
     		$filme->setUploadFile( $request->file('capa-filme') );
@@ -64,11 +74,12 @@ class FilmesController extends Controller {
     	$filme->ano  = $request->input('ano');
     	$filme->nome = $request->input('nome');
     	$filme->nota = $request->input('nota');
-    	$filme->genero()->associate( $genero );
-    	$filme->pais()->associate( $pais );
     	
-    	\DB::transaction(function() use ($filme){
+    	
+    	\DB::transaction(function() use ($filme, $generos){
+    		
     		$filme->save();
+    		$filme->generos()->saveMany( $generos->all() );
     	});
     	
     	return redirect('/');
