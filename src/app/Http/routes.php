@@ -8,6 +8,7 @@
 	});
 	
 	
+	Route::controller('comentario', 'ComentariosController');
 	Route::controller('/', 'FilmesController');
-	Route::controller('/comentario', 'ComentariosController');
+	
 ?>
