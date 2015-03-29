@@ -6,10 +6,10 @@
     		<div class="col-md-10" style="cursor: pointer" data-toggle="collapse" data-target="#collapse{{$filme->id}}">
 	          <table>
 	          	<tr>
-	          		<td rowspan="5"><img style="padding: 5px;" alt="" src="{{ $filme->imagem }}" width="100" height="120"></td>
+	          		<td rowspan="5"><img style="padding: 5px;" alt="" src="{{ $filme->imagem }}" width="110" height="120"></td>
 	          	</tr>
 	          	<tr>
-	          		<td class="text-capitalize"><label>Título:</label> {{ $filme->nome }}</td>
+	          		<td><label>Título:</label><span class="text-uppercase"> {{ $filme->nome }}</span></td>
 	          	</tr>
 	          	<tr>
 	          		<td class="text-capitalize"><label>Gênero:</label> {{ $filme->genero->nome }}</td>
@@ -23,15 +23,15 @@
 	          </table>
 		    </div>
 		    <div class="col-md-2">
-		    	<table class="botoes-acao">
+		    	<table class="botoes-acao">		          	
 		          	<tr>
-		          		<td><input class="btn btn-md btn-default" type="button" value="Comentar"></td>
+		          		<td>{!! Html::link(URL::to('form-editar', [$filme->id]), 'Editar', ['title' => 'Editar dados do filme', 'class' => 'btn btn-sm btn-warning']) !!}</td>
 		          	</tr>
 		          	<tr>
-		          		<td><input class="btn btn-md btn-warning" type="button" value="Editar"></td>
+		          		<td>{!! Html::link(URL::to('excluir', [$filme->id]), 'Excluir', ['title' => 'Excluir filme', 'name' => "excluir-filme", 'class' => 'btn btn-sm btn-danger']) !!}</td>
 		          	</tr>
 		          	<tr>
-		          		<td><input class="btn btn-md btn-danger" type="button" value="Excluir"></td>
+		          		<td>{!! Html::link(URL::to('form-comentario', [$filme->id]), 'Novo Comentário', ['title' => 'Adicionar comentário', 'class' => 'btn btn-sm btn-default']) !!}</td>
 		          	</tr>
 	          	</table>
 		    </div>
@@ -40,17 +40,16 @@
     <div id="collapse{{$filme->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
       	
-      	
       	<table class="table table-bordered">
-      		<tr>
+      		<tr class="info">
       			<td class="text-center"><label>Comentário</label></td>
       			<td class="text-center"><label>Com Quem</label></td>
       			<td class="text-center"><label>Local</label></td>
       			<td class="text-center"><label>Data</label></td>
-      			<td class="text-center"><label>Ações</label></td>
+      			<td class="text-center"><label>Ação</label></td>
       		</tr>
       		<tr valign="middle">
-      			<td width="30">
+      			<td width="35">
       				FGO NǴONSDFǴNFfǵo nsdfǵosdnfǵ osdifng sdfog nsdgoisdfgósidfng  ríofg sfdǵosidf śofid sdfg fdóg isdfǵoisdfǵo isdfgóisdf gśodfig fg oasdnfóasd
       			</td>
       			<td width="10">
@@ -59,12 +58,12 @@
       			<td width="10">
       				Na sala
       			</td>
-      			<td width="10">
+      			<td align="center" width="5">
       				09/04/2011
       			</td>
       			<td width="10" valign="middle" class="text-center">
-      				<input class="btn btn-sm btn-warning" type="button" value="Editar">
-      				<input class="btn btn-sm btn-danger" type="button" value="Excluir">
+      				{!! Html::link(URL::to('editar-comentario', [$filme->id]), 'Editar', ['title' => 'Edtar comentário', 'class' => 'btn btn-sm btn-warning']) !!}
+      				{!! Html::link(URL::to('excluir-comentario', [$filme->id]), 'Excluir', ['title' => 'Excluir comentário', 'class' => 'btn btn-sm btn-danger']) !!}
       			</td>
       		</tr>
 		</table>
