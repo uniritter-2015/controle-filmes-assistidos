@@ -11,14 +11,10 @@ class GeneroSeeder extends Seeder
         Genero::create(array('nome' =>'Animação'));
         Genero::create(array('nome' =>'Aventura'));
         Genero::create(array('nome' =>'Chanchada'));
-        Genero::create(array('nome' =>'Cinema catástrofe'));
         Genero::create(array('nome' =>'Comédia'));
-        Genero::create(array('nome' =>'Comédia romântica'));
-        Genero::create(array('nome' =>'Comédia dramática'));
-        Genero::create(array('nome' =>'Comédia de ação'));
         Genero::create(array('nome' =>'Cult'));
         Genero::create(array('nome' =>'Dança'));
-        Genero::create(array('nome' =>'Documentários'));
+        Genero::create(array('nome' =>'Documentário'));
         Genero::create(array('nome' =>'Drama'));
         Genero::create(array('nome' =>'Espionagem'));
         Genero::create(array('nome' =>'Erótico'));
