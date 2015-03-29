@@ -13,7 +13,7 @@
     <div class="form-group">
         {!! Form::label('nota', 'Nota:') !!}
         <span class="req">*</span>
-        {!! Form::selectRange('nota', 0, 5, 0, ['class' => 'form-control']) !!}
+        {!! Form::selectNotas('nota') !!}
     </div>
 
     <div class="form-group">
