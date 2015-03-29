@@ -9,4 +9,5 @@
 	
 	
 	Route::controller('/', 'FilmesController');
+	Route::controller('/comentario', 'ComentariosController');
 ?>
