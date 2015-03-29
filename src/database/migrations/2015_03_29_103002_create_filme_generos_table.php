@@ -12,7 +12,7 @@ class CreateFilmeGenerosTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('filmeGeneros', function(Blueprint $table)
+        Schema::create('filme_genero', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('filme_id')->unsigned();
@@ -35,7 +35,7 @@ class CreateFilmeGenerosTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('filmeGeneros');
+        Schema::drop('filme_genero');
 	}
 
 }
