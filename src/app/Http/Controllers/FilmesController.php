@@ -13,20 +13,26 @@ class FilmesController extends Controller {
 
     public function getIndex()
     {
-    	$filmesBuilder = Filme::where( \DB::raw('1'),'1');
-    	
+        //$filmesBuilder = Filme::join('visualizacoes', 'visualizacoes.filme_id', '=', 'filme.id')->where( \DB::raw('1'),'1');
+        //$filmesBuilder = \DB::table('filmes as filme')->join('visualizacoes', 'visualizacoes.filme_id', '=', 'filme.id')->where( \DB::raw('1'),'1');
+        $filmesBuilder = Filme::where( \DB::raw('1'),'1');
+
+        //dd($filmesBuilder);
+
     	if( Input::has('nome') ){
-    		$filmesBuilder = $filmesBuilder->where( 'nome','LIKE', '%'. Input::get('nome'). '%' )->latest('created_at');
-    		
+    		$filmesBuilder = $filmesBuilder->where( 'nome','LIKE', '%'. Input::get('nome'). '%' );
     	}
 
     	if( Input::has('nota') ){
-    		$filmesBuilder = $filmesBuilder->where('nota', Input::get('nota'))->get();
+    		$filmesBuilder = $filmesBuilder->where('nota', Input::get('nota'));
     	}
-    	
+
+        if( Input::has('data_inicial') ){
+            $filmesBuilder = $filmesBuilder->where('data_inicial', '>=', Input::get('data_inicial'));
+        }
+
         $form = [];
         $form['filmes'] = $filmesBuilder->get();
-        $form['criterios'] = ['nome' => 'título']; 
 		
         return view('filmes.index', ['lista' => $form]);
     }
