@@ -10,5 +10,4 @@ class Pais extends Model {
     {
         return $this->hasMany('App\Filme');
     }
-
 }

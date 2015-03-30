@@ -7,14 +7,14 @@ class Visualizacao extends Model {
 
     protected $table = 'visualizacoes';
 
-    public function filme()
-    {
-        return $this->hasOne('App\Filme');
-    }
-
     public function getDataVistoAttribute($date)
     {
         return new \DateTime($date);
 
+    }
+
+    public function filme()
+    {
+        return $this->belongsTo('App\Filme');
     }
 }

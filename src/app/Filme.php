@@ -52,9 +52,9 @@ class Filme extends Model {
     public function setImagemAttribute($imagem)
     {
     	$this->attributes['imagem'] = 'capas/'.trim($imagem);
-    } 
-    
-    
+    }
+
+
     public function generos()
     {
         return $this->belongsToMany('App\Genero');
@@ -65,13 +65,8 @@ class Filme extends Model {
         return $this->belongsTo('App\Pais');
     }
 
-    public function comentarios()
-    {
-        return $this->hasMany('App\Comentario');
-    }
-
     public function visualizacao()
     {
-        return $this->belongsTo('App\Visualizacao');
+        return $this->hasMany('App\Visualizacao');
     }
 }

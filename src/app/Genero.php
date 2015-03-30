@@ -10,5 +10,4 @@ class Genero extends Model {
     {
         return $this->belongsToMany('App\Filme');
     }
-
 }

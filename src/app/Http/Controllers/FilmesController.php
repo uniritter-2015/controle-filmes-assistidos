@@ -19,6 +19,7 @@ class FilmesController extends Controller {
     		$filmesBuilder = $filmesBuilder->where( 'nome','LIKE', '%'. Input::get('nome'). '%' )->latest('created_at');
     		
     	}
+
     	if( Input::has('nota') ){
     		$filmesBuilder = $filmesBuilder->where('nota', Input::get('nota'))->get();
     	}
@@ -77,9 +78,9 @@ class FilmesController extends Controller {
     	
     	
     	\DB::transaction(function() use ($filme, $generos){
-    		
     		$filme->save();
     		$filme->generos()->saveMany( $generos->all() );
+
     	});
     	
     	return redirect('/');
