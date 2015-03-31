@@ -11,35 +11,41 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FilmesController extends Controller {
 
+    private $notas = ['', 1,2,3,4,5];
+
     public function getIndex()
     {
-        //$filmesBuilder = Filme::join('visualizacoes', 'visualizacoes.filme_id', '=', 'filme.id')->where( \DB::raw('1'),'1');
-        //$filmesBuilder = \DB::table('filmes as filme')->join('visualizacoes', 'visualizacoes.filme_id', '=', 'filme.id')->where( \DB::raw('1'),'1');
-        $filmesBuilder = Filme::where( \DB::raw('1'),'1');
+        $notas = $this->notas;
 
-        //dd($filmesBuilder);
+        $filmesBuilder = Filme::join('visualizacoes', 'filmes.id', '=', 'visualizacoes.filme_id')->where( \DB::raw('1'),'1');
 
-    	if( Input::has('nome') ){
-    		$filmesBuilder = $filmesBuilder->where( 'nome','LIKE', '%'. Input::get('nome'). '%' );
-    	}
-
-    	if( Input::has('nota') ){
-    		$filmesBuilder = $filmesBuilder->where('nota', Input::get('nota'));
-    	}
-
-        if( Input::has('data_inicial') ){
-            $filmesBuilder = $filmesBuilder->where('data_inicial', '>=', Input::get('data_inicial'));
+        if( Input::has('nome') ){
+            $filmesBuilder = $filmesBuilder->where('filmes.nome','LIKE', '%'. Input::get('nome'). '%');
         }
 
-        $form = [];
-        $form['filmes'] = $filmesBuilder->get();
+        if( Input::has('nota') ){
+            $filmesBuilder = $filmesBuilder->where('filmes.nota', Input::get('nota'));
+        }
+
+        if( Input::has('data_inicial') ){
+
+            $filmesBuilder = $filmesBuilder->where('visualizacoes.data_visto', '>=', implode('-', array_reverse(explode('/', Input::get('data_inicial')))));
+        }
+
+        if( Input::has('data_final') ){
+
+            $filmesBuilder = $filmesBuilder->where('visualizacoes.data_visto', '<=', implode('-', array_reverse(explode('/', Input::get('data_final')))));
+        }
+
+        $lista = [];
+        $lista['filmes'] = $filmesBuilder->get();
 		
-        return view('filmes.index', ['lista' => $form]);
+        return view('filmes.index', compact('lista', 'notas'));
     }
     
     public function getFormCadastro()
-    {   
-    	$notas = ['', 1,2,3,4,5];
+    {
+        $notas = $this->notas;
     	$paises = Pais::all()->sortBy('nome')->lists('nome', 'id');
     	$generos = Genero::all()->sortBy('nome')->lists('nome', 'id');
     	
@@ -51,8 +57,8 @@ class FilmesController extends Controller {
     public function getFormEditar($filmeId)
     {
     	$filme 	= Filme::findOrFail( $filmeId );
-    	
-    	$notas = ['', 1,2,3,4,5];
+
+        $notas = $this->notas;
     	$paises = Pais::all()->sortBy('nome')->lists('nome', 'id');
     	$generos = Genero::all()->sortBy('nome')->lists('nome', 'id');
     	$generosSelecionados = $filme->generos->modelKeys();
