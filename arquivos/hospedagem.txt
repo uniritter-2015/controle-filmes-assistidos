@@ -1,20 +1,16 @@
-FTP
-ftp.sistemadrh.com.br
-mfqjv@sistemadrh.com.br
-e0ynrq03vweu
+Plano de Hospedagem: Gratuito
+Domínio: http://javifilmes.esy.es/public/
+Endereço IP: 31.170.166.192
 
-BANCO
-PHPMyAdmin: http://187.45.180.6:2082/cpsess2084118121/3rdparty/phpMyAdmin/index.php
-banco sistemad_mfqjv
-user sistemad_mfqjv
-senha e0ynrq03vweu
+Nome do Servidor: server11.hostinger.com.br
+IP do Servidor: 31.170.166.11
 
-URL
-mfqjv.sistemadrh.com.br
+FTP Hostname Temporário: 31.170.166.192
+FTP Hostname completo: ftp.javifilmes.esy.es
+Usuário FTP: u200530036
+Senha FTP: syncmaster743n
 
-Dados do banco de dados:
-Servername: localhost
-Database:   mfqgvcom_dbase
-User:       mfqgvcom_admin
-Password:   LIDCc7iGySlr
-
+MySQL Database: u200530036_2015
+MySQL User: 	u200530036_2015
+MySQL Pass:	u200530036_
+MySQL Host: 	mysql.hostinger.com.br
