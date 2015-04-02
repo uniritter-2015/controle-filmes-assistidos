@@ -50,16 +50,16 @@
       		</tr>
       		<tr valign="middle">
       			<td width="35">
-      				FGO NǴONSDFǴNFfǵo nsdfǵosdnfǵ osdifng sdfog nsdgoisdfgósidfng  ríofg sfdǵosidf śofid sdfg fdóg isdfǵoisdfǵo isdfgóisdf gśodfig fg oasdnfóasd
+      				{{ $filme->comentario }}
       			</td>
       			<td width="10">
-      				Filha da vizinha
+      				{{ $filme->com_quem }}
       			</td>
       			<td width="10">
-      				Na sala
+      				{{ $filme->local_visto }}
       			</td>
       			<td align="center" width="5">
-      				09/04/2011
+      				{{ $filme->data_visto->format('d/m/Y') }}
       			</td>
       			<td width="10" valign="middle" class="text-center">
       				{!! Html::link(URL::to('editar-comentario', [$filme->id]), 'Editar', ['title' => 'Edtar comentário', 'class' => 'btn btn-sm btn-default']) !!}
