@@ -19,7 +19,7 @@
 
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-md-12">
-			@foreach($lista['filmes'] as $indice => $filme)
+			@foreach($filmes as $indice => $filme)
 				@include('filmes.partials.filme_panel')
 			@endforeach
 		</div>

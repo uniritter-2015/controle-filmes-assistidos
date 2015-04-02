@@ -8,6 +8,7 @@ use App\Genero;
 use App\Http\Requests\FilmeRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Collection;
+use App\Visualizacao;
 
 class FilmesController extends Controller {
 
@@ -37,10 +38,9 @@ class FilmesController extends Controller {
             $filmesBuilder = $filmesBuilder->where('visualizacoes.data_visto', '<=', implode('-', array_reverse(explode('/', Input::get('data_final')))));
         }
 
-        $lista = [];
-        $lista['filmes'] = $filmesBuilder->get();
+        $filmes = $filmesBuilder->get();
 		
-        return view('filmes.index', compact('lista', 'notas'));
+        return view('filmes.index', compact('filmes', 'notas'));
     }
     
     public function getFormCadastro()
@@ -88,10 +88,25 @@ class FilmesController extends Controller {
     	$filme->nome = $request->input('nome');
     	$filme->nota = $request->input('nota');
     	
+    	$visualizacao = null;
+    	if( is_null($filme->id) ){
+    			
+    		$visualizacao = new Visualizacao();
+    		$visualizacao->comentario = trim($request->comentario);
+    		$visualizacao->data_visto = $request->data;
+    		$visualizacao->local_visto = $request->local;
+    		$visualizacao->com_quem = 	$request->comquem;
+    	}
     	
-    	\DB::transaction(function() use ($filme, $generos){
+    	\DB::transaction(function() use ($filme, $generos, $visualizacao){
+    		
     		$filme->save();
     		$filme->generos()->saveMany( $generos->all() );
+    		
+    		if( !is_null($visualizacao) ){
+    			
+    		}
+    		$visualizacao->filme()->associate( $filme )->save();
 
     	});
     	
