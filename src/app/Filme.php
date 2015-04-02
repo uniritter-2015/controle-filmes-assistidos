@@ -10,6 +10,11 @@ class Filme extends Model {
     protected $table = 'filmes';
 
     
+	public function getDataVistoAttribute($date)
+    {
+        return new \DateTime($date);
+    }
+    
     public static function boot()
     {
     	parent::boot();
@@ -65,7 +70,7 @@ class Filme extends Model {
         return $this->belongsTo('App\Pais');
     }
 
-    public function visualizacao()
+    public function visualizacoes()
     {
         return $this->hasMany('App\Visualizacao');
     }
