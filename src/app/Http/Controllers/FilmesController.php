@@ -104,9 +104,8 @@ class FilmesController extends Controller {
     		$filme->generos()->saveMany( $generos->all() );
     		
     		if( !is_null($visualizacao) ){
-    			
+    			$visualizacao->filme()->associate( $filme )->save();
     		}
-    		$visualizacao->filme()->associate( $filme )->save();
 
     	});
     	
