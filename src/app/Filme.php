@@ -2,18 +2,15 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Illuminate\Database\Eloquent\Collection;
 
 class Filme extends Model {
 
-	private $file;
+	private $uploadedFile;
+	private $imagemAntiga;
 	
     protected $table = 'filmes';
 
-    
-	public function getDataVistoAttribute($date)
-    {
-        return new \DateTime($date);
-    }
     
     public static function boot()
     {
@@ -21,42 +18,91 @@ class Filme extends Model {
     	
     	static::updating(function(Filme $filme){
     		
-    		$file = $filme->getUploadFile();
-    		if( !is_null( $file ) ){
+    		$filme->setImagemAntiga( Filme::where('id', $filme->id)->first()->imagem );
+    	});
+    	
+    	static::updated(function(Filme $filme){
+    	
+    		$uploadFile = $filme->getUploadFile();
+    		
+    		if( !is_null( $uploadFile ) ){
     			
-    			$imagemAnterior = Filme::findOrFail( $filme->id )->imagem; 
-    			return \File::delete( $imagemAnterior );
+    			$uploadFile->move( public_path( 'capas' ), $uploadFile->getClientOriginalName() );
+    				 
+    			if( !empty( $filme->getImagemAntiga() ) ){
+    				return \File::delete( public_path($filme->getImagemAntiga()) );
+    			}
+    		}
+    		
+    	});
+    	
+    	static::created(function(Filme $filme){
+    		
+    		$uploadFile = $filme->getUploadFile();
+    		if( !is_null( $uploadFile ) ){
+    			$uploadFile->move( public_path( 'capas' ), $uploadFile->getClientOriginalName() );
     		}
     	});
     	
     	static::saved(function(Filme $filme){
     		
-    		$file = $filme->getUploadFile();
-    		if( !is_null( $file ) ){
-    			$file->move( 'capas/', $file->getClientOriginalName() );
+    		if( !\File::isDirectory( public_path('capas') ) ){
+    			\File::makeDirectory( public_path('capas'), 0777 );
     		}
     	});
     	
     	static::deleted(function(Filme $filme){
     		
-    		return \File::delete( $filme->imagem );
+    		if( !empty( $filme->imagem ) ) {
+    			
+    			return \File::delete( $filme->imagem );
+    		}
+    		
     	});
     }
     
+    public function setImagemAntiga($imagem)
+    {
+    	$this->imagemAntiga = $imagem;
+    }
+    public function getImagemAntiga()
+    {
+    	return $this->imagemAntiga;
+    }
+    
+    public function setPaisIdAttribute($paisId)
+    {
+    	$pais = Pais::find( intval($paisId) );
+    	
+    	$this->attributes['pais_id'] = is_null($pais) ? null : $pais->id;
+    }
+    
+    public function setNomeAttribute($value)
+    {
+    	$this->attributes['nome'] = trim($value);
+    }
+    
+	public function getDataAttribute($date)
+    {
+        return new \DateTime($date);
+    }
     
     public function getUploadFile()
     {
-    	return $this->file;
-    }
-    public function setUploadFile(UploadedFile $file)
-    {
-    	$this->file = $file;
-    	$this->imagem = $file->getClientOriginalName();
+    	return $this->uploadedFile;
     }
     
     public function setImagemAttribute($imagem)
     {
-    	$this->attributes['imagem'] = 'capas/'.trim($imagem);
+    	if( $imagem instanceof UploadedFile){
+    		
+    		$this->attributes['imagem'] = 'capas/'.trim($imagem->getClientOriginalName());
+    		$this->uploadedFile = $imagem;
+    	}
+    }    
+    public function getImagemAttribute($value)
+    {
+    	return $value;
     }
 
 
