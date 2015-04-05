@@ -14,10 +14,10 @@
 	<div class="well well-lg">
 		<div class="row">
 			<div class="col-md-6">
-			{!! Form::open(['url' => 'comentario/novo', 'files' => true]) !!}
-		    	@include('filmes.partials.comentario_form')
+			{!! Form::open(['url' => ['filmes/visualizacao/adicionar', $filme->id]]) !!}
+		    	@include('filmes.visualizacao.visualizacao_form')
 		    	 <div class="form-group">
-		        	{!! Form::submit('Adicionar Comentário', ['class' => 'btn btn-sm btn-primary disabled']) !!}
+		        	{!! Form::submit('Adicionar', ['class' => 'btn btn-sm btn-primary']) !!}
 		    	</div>
 		    {!! Form::close() !!}
 		    </div>
