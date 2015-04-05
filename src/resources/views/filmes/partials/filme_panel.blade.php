@@ -31,7 +31,7 @@
 		          		<td>{!! Html::link(URL::to('editar-filme', [$filme->id]), 'Editar', ['title' => 'Editar dados do filme', 'class' => 'btn btn-sm btn-default']) !!}</td>
 		          	</tr>
 		          	<tr>
-		          		<td>{!! Html::link(URL::to('excluir', [$filme->id]), 'Excluir', ['title' => 'Excluir filme', 'name' => "excluir-filme", 'class' => 'btn btn-sm btn-default']) !!}</td>
+		          		<td>{!! Html::link(URL::to('excluir', [$filme->id]), 'Excluir', ['title' => 'Excluir filme', 'name' => "excluir-filme", 'class' => 'btn btn-sm btn-danger']) !!}</td>
 		          	</tr>
 		          	<tr>
 		          		<td>{!! Html::link(URL::to('filmes/visualizacao/adicionar', [$filme->id]), 'Novo Comentário', ['title' => 'Adicionar comentário', 'class' => 'btn btn-sm btn-default']) !!}</td>
@@ -67,7 +67,7 @@
       			</td>
       			<td width="15%" -valign="middle" class="text-center">
       				{!! Html::link(URL::to('filmes/visualizacao/editar', [$visualizacao->id]), 'Editar', ['title' => 'Editar detalhes da visualizacao', 'class' => 'btn btn-sm btn-default']) !!}
-      				{!! Html::link(URL::to('filmes/visualizacao/excluir', [$visualizacao->id]), 'Excluir', ['title' => 'Editar detalhes da visualizacao', 'class' => 'btn btn-sm btn-default']) !!}
+      				{!! Html::link(URL::to('filmes/visualizacao/excluir', [$visualizacao->id]), 'Excluir', ['title' => 'Editar detalhes da visualizacao', 'class' => 'btn btn-sm btn-danger']) !!}
       			</td>
       		</tr>
       		@endforeach
