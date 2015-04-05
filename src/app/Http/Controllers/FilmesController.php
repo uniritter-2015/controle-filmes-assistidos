@@ -14,7 +14,7 @@ class FilmesController extends Controller {
 
     public function getIndex()
     {
-        $filmesBuilder = Filme::join('visualizacoes', 'filmes.id', '=', 'visualizacoes.filme_id')->where( \DB::raw('1'),'1');
+        $filmesBuilder = Filme::where( \DB::raw('1'),'1');
 
         if( Input::has('nome') ){
             $filmesBuilder = $filmesBuilder->where('filmes.nome','LIKE', '%'. Input::get('nome'). '%');
