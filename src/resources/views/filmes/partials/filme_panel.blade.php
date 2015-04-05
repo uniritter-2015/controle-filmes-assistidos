@@ -6,7 +6,7 @@
     		<div class="col-md-10" style="cursor: pointer" data-toggle="collapse" data-target="#collapse{{$filme->id}}">
 	          <table>
 	          	<tr>
-	          		<td rowspan="6">{!! Html::image($filme->imagem, '', ['style' => 'padding: 5px;margin-right: 10px;width:140px;height:150px' ]) !!}	          		
+	          		<td rowspan="6">{!! Html::image($filme->imagem, '', ['class' => 'capa-filme' ]) !!}	          		
 	          	</tr>
 	          	<tr>
 	          		<td><label>Título:</label><span class="text-uppercase"> {{ $filme->nome }}</span></td>

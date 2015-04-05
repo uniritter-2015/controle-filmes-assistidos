@@ -20,6 +20,9 @@
 		
 		table.visualizacao td { vertical-align: middle !important; }
 		table.visualizacao tr.conteudo { height: 70px !important; }
+		
+		img.capa-filme { padding: 1px;margin-right: 10px;width:140px;height:150px;border-radius: 5px;border: 1px solid yellow; }
+		
 	</style>
 	
 </head>
