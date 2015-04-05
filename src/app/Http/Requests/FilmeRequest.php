@@ -26,7 +26,7 @@ class FilmeRequest extends Request {
             'nome' => 'required|min:3',            
         	'ano' => 'required',
         	'nota' => 'required|not_in:0',
-        	'data' => 'required'
+        	'data' => 'sometimes|required'
         ];
 	}
 
