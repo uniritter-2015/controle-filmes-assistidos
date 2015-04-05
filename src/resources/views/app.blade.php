@@ -12,7 +12,7 @@
 	
 	<style type="text/css">
 	
-		table.botoes-acao { position: relative; margin-top: 10px; }
+		table.botoes-acao { position: relative; margin-top: 25px; }
 		table.botoes-acao td { padding-bottom: 3px }
 		table.botoes-acao .btn { width: 115px }
 		.btn-warning { color: #000000; background-color: rgba(255, 223, 0, 1); border-color: #eea236; }
