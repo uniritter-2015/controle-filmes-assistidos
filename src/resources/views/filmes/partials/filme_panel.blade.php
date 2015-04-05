@@ -25,13 +25,13 @@
 		    <div class="col-md-2">
 		    	<table class="botoes-acao">		          	
 		          	<tr>
-		          		<td>{!! Html::link(URL::to('form-editar', [$filme->id]), 'Editar', ['title' => 'Editar dados do filme', 'class' => 'btn btn-sm btn-default']) !!}</td>
+		          		<td>{!! Html::link(URL::to('editar-filme', [$filme->id]), 'Editar', ['title' => 'Editar dados do filme', 'class' => 'btn btn-sm btn-default']) !!}</td>
 		          	</tr>
 		          	<tr>
 		          		<td>{!! Html::link(URL::to('excluir', [$filme->id]), 'Excluir', ['title' => 'Excluir filme', 'name' => "excluir-filme", 'class' => 'btn btn-sm btn-default']) !!}</td>
 		          	</tr>
 		          	<tr>
-		          		<td>{!! Html::link(URL::to('comentario/form-cadastro', [$filme->id]), 'Novo Comentário', ['title' => 'Adicionar comentário', 'class' => 'btn btn-sm btn-default']) !!}</td>
+		          		<td>{!! Html::link(URL::to('filmes/visualizacao/adicionar', [$filme->id]), 'Novo Comentário', ['title' => 'Adicionar comentário', 'class' => 'btn btn-sm btn-default']) !!}</td>
 		          	</tr>
 	          	</table>
 		    </div>
@@ -40,7 +40,7 @@
     <div id="collapse{{$filme->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
       	
-      	<table class="table table-bordered">
+      	<table class="table table-bordered table-condensed visualizacao">
       		<tr class="info">
       			<td class="text-center"><label>Comentário</label></td>
       			<td class="text-center"><label>Com Quem</label></td>
@@ -48,24 +48,26 @@
       			<td class="text-center"><label>Data</label></td>
       			<td class="text-center"><label>Ação</label></td>
       		</tr>
-      		<tr valign="middle">
-      			<td width="35">
-      				{{ $filme->comentario }}
+      		@foreach($filme->visualizacoes as $key => $visualizacao)
+      		<tr class="conteudo">
+      			<td>
+      				{{ $visualizacao->comentario }}
       			</td>
-      			<td width="10">
-      				{{ $filme->com_quem }}
+      			<td>
+      				{{ $visualizacao->com_quem }}
       			</td>
-      			<td width="10">
-      				{{ $filme->local_visto }}
+      			<td>
+      				{{ $visualizacao->local }}
       			</td>
-      			<td align="center" width="5">
-      				{{ $filme->data_visto->format('d/m/Y') }}
+      			<td width="15%" class="text-center">
+      				{{ $visualizacao->data->format('d/m/Y') }}
       			</td>
-      			<td width="10" valign="middle" class="text-center">
-      				{!! Html::link(URL::to('editar-comentario', [$filme->id]), 'Editar', ['title' => 'Edtar comentário', 'class' => 'btn btn-sm btn-default']) !!}
-      				{!! Html::link(URL::to('excluir-comentario', [$filme->id]), 'Excluir', ['title' => 'Excluir comentário', 'class' => 'btn btn-sm btn-default']) !!}
+      			<td width="15%" -valign="middle" class="text-center">
+      				{!! Html::link(URL::to('filmes/visualizacao/editar', [$visualizacao->id]), 'Editar', ['title' => 'Editar detalhes da visualizacao', 'class' => 'btn btn-sm btn-default']) !!}
+      				{!! Html::link(URL::to('filmes/visualizacao/excluir', [$visualizacao->id]), 'Excluir', ['title' => 'Editar detalhes da visualizacao', 'class' => 'btn btn-sm btn-default']) !!}
       			</td>
       		</tr>
+      		@endforeach
 		</table>
         
       </div>
