@@ -13,12 +13,12 @@
     <div class="form-group">
         {!! Form::label('nota', 'Nota:') !!}
         <span class="req">*</span>
-		{!! Form::select('nota', $notas, isset($filme) ? $filme->nota : 0, ['class' => 'form-control chosen-select']) !!}
+		{!! Form::select('nota', $notas, null, ['class' => 'form-control chosen-select']) !!}
     </div>
 	
     <div class="form-group">
-        {!! Form::label('capa-filme', 'Imagem de Capa:') !!}
-        {!! Form::file('capa-filme', array('class' => '')) !!}
+        {!! Form::label('imagem', 'Imagem de Capa:') !!}
+        {!! Form::file('imagem', array('class' => '')) !!}
     </div>
 
     <div class="form-group">
@@ -29,5 +29,5 @@
 	
     <div class="form-group">
         {!! Form::label('pais_id', 'País:') !!}
-        {!! Form::select('pais_id', $paises, isset($filme->pais) ? $filme->pais->id : 0, ['class' => 'form-control text-capitalize chosen-select', 'required']) !!}
+        {!! Form::select('pais_id', $paises, null, ['class' => 'form-control text-capitalize chosen-select']) !!}
     </div>
