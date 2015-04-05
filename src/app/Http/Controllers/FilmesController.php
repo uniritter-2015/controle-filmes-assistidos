@@ -12,12 +12,8 @@ use App\Visualizacao;
 
 class FilmesController extends Controller {
 
-    private $notas = ['', 1,2,3,4,5];
-
     public function getIndex()
     {
-        $notas = $this->notas;
-
         $filmesBuilder = Filme::join('visualizacoes', 'filmes.id', '=', 'visualizacoes.filme_id')->where( \DB::raw('1'),'1');
 
         if( Input::has('nome') ){
@@ -40,73 +36,65 @@ class FilmesController extends Controller {
 
         $filmes = $filmesBuilder->get();
 		
-        return view('filmes.index', compact('filmes', 'notas'));
+        return view('filmes.index', compact('filmes'));
     }
     
-    public function getFormCadastro()
+    public function getAdicionarFilme()
     {
-        $notas = $this->notas;
-    	$paises = Pais::all()->sortBy('nome')->lists('nome', 'id');
-    	$generos = Genero::all()->sortBy('nome')->lists('nome', 'id');
-    	
-    	array_unshift($paises, '');
-    	
-    	return view('filmes.cadastrar', compact('notas', 'paises', 'generos'));
+    	return view('filmes.adicionar');
     }
     
-    public function getFormEditar($filmeId)
+    public function getEditarFilme($filmeId)
     {
-    	$filme 	= Filme::findOrFail( $filmeId );
-
-        $notas = $this->notas;
-    	$paises = Pais::all()->sortBy('nome')->lists('nome', 'id');
-    	$generos = Genero::all()->sortBy('nome')->lists('nome', 'id');
+    	$filme = Filme::FindOrFail( $filmeId );
+    	
     	$generosSelecionados = $filme->generos->modelKeys();
     	
-    	array_unshift($paises, '');
-    	
-    	return view('filmes.editar', compact('notas', 'paises', 'generos', 'generosSelecionados', 'filme'));
+    	return view('filmes.editar', compact('generosSelecionados', 'filme'));
     }
     
-    public function postSalvar(FilmeRequest $request, $filmeId = null)
+    public function postAdicionar(FilmeRequest $request)
     {
-    	$filme 	= Filme::findOrNew( $filmeId );
-    	$generos = Genero::findOrFail( $request->input('genero_id') );
+    	$filme = new Filme();
+    	$filme->pais_id = $request->pais_id;
+    	$filme->ano  = $request->ano;
+    	$filme->nome = $request->nome;
+    	$filme->nota = $request->nota;
+    	$filme->imagem = $request->file('imagem');
     	
+    	$visualizacao = new Visualizacao();
+    	$visualizacao->comentario = $request->comentario;
+    	$visualizacao->com_quem   = $request->com_quem;
+    	$visualizacao->local 	  = $request->local;
+    	$visualizacao->data 	  =	$request->data;
     	
-    	if( Input::get('pais_id') != 0 ){
-    		
-    		$pais = Pais::findOrFail( $request->input('pais_id') );
-    		$filme->pais()->associate( $pais );
-    	}
+    	$generos = Genero::findOrFail( $request->genero_id );
     	
-    	if( $request->hasFile('capa-filme') ){
-    		$filme->setUploadFile( $request->file('capa-filme') );
-    	}
+    	\DB::transaction(function() use ($filme, $generos, $visualizacao){
     	
+    		$filme->save();
+    		$filme->generos()->saveMany( $generos->all() );
+    		$visualizacao->filme()->associate( $filme )->save();
+    	});
+    	
+    	return redirect('/');
+    }
+    
+    public function postAtualizar(FilmeRequest $request, $filmeId)
+    {
+    	$filme = Filme::findOrFail( $filmeId );
+    	$filme->pais_id = $request->pais_id;
     	$filme->ano  = $request->input('ano');
     	$filme->nome = $request->input('nome');
     	$filme->nota = $request->input('nota');
+    	$filme->imagem = $request->file('imagem');
     	
-    	$visualizacao = null;
-    	if( is_null($filme->id) ){
-    			
-    		$visualizacao = new Visualizacao();
-    		$visualizacao->comentario = trim($request->comentario);
-    		$visualizacao->data_visto = $request->data;
-    		$visualizacao->local_visto = $request->local;
-    		$visualizacao->com_quem = 	$request->comquem;
-    	}
+    	$generos = Genero::findOrFail( $request->genero_id );    	
     	
-    	\DB::transaction(function() use ($filme, $generos, $visualizacao){
-    		
+    	\DB::transaction(function() use ($filme, $generos){
+    	
     		$filme->save();
-    		$filme->generos()->saveMany( $generos->all() );
-    		
-    		if( !is_null($visualizacao) ){
-    			$visualizacao->filme()->associate( $filme )->save();
-    		}
-
+    		$filme->generos()->sync( $generos->modelKeys() );
     	});
     	
     	return redirect('/');
