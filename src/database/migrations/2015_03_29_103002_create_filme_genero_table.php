@@ -20,7 +20,7 @@ class CreateFilmeGeneroTable extends Migration {
 
             $table->foreign('filme_id')
                 ->references('id')
-                ->on('filmes');
+                ->on('filmes')->onDelete('cascade');
 
             $table->foreign('genero_id')
                 ->references('id')
