@@ -17,6 +17,9 @@
 		table.botoes-acao .btn { width: 115px }
 		.btn-warning { color: #000000; background-color: rgba(255, 223, 0, 1); border-color: #eea236; }
 		.req { color: red }
+		
+		table.visualizacao td { vertical-align: middle !important; }
+		table.visualizacao tr.conteudo { height: 70px !important; }
 	</style>
 	
 </head>
@@ -37,7 +40,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        {!! Html::link(URL::to('form-cadastro'), 'Novo Filme') !!}
+                        {!! Html::link(URL::to('adicionar-filme'), 'Novo Filme') !!}
                     </li>
                 </ul>
             </div>
