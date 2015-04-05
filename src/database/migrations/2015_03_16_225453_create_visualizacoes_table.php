@@ -17,14 +17,14 @@ class CreateVisualizacoesTable extends Migration {
 			$table->increments('id');
             $table->integer('filme_id')->unsigned();
             $table->text('comentario');
-            $table->date('data_visto');
-            $table->string('local_visto', 255);
+            $table->date('data');
+            $table->string('local', 255);
             $table->string('com_quem', 255);
 			$table->timestamps();
 
             $table->foreign('filme_id')
                 ->references('id')
-                ->on('filmes');
+                ->on('filmes')->onDelete('cascade');
 		});
 	}
 
