@@ -147,6 +147,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\MacroServiceProvider',
 		'App\Providers\ComposerServiceProvider',
+		'Intervention\Image\ImageServiceProvider'
 
 	],
 
@@ -197,6 +198,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Html'      => 'Illuminate\Html\HtmlFacade',
 		'Form'      => 'Illuminate\Html\FormFacade',
+		'Image' 	=> 'Intervention\Image\Facades\Image'
 		
 	],
 

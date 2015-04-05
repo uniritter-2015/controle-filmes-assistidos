@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Database\Eloquent\Collection;
+use Intervention\Image\Facades\Image;
 
 class Filme extends Model {
 
@@ -27,7 +28,7 @@ class Filme extends Model {
     		
     		if( !is_null( $uploadFile ) ){
     			
-    			$uploadFile->move( public_path( 'capas' ), $uploadFile->getClientOriginalName() );
+    			Image::make( $uploadFile->getPathname() )->fit(140, 150)->save( public_path($filme->imagem) );
     				 
     			if( !empty( $filme->getImagemAntiga() ) ){
     				return \File::delete( public_path($filme->getImagemAntiga()) );
@@ -40,7 +41,8 @@ class Filme extends Model {
     		
     		$uploadFile = $filme->getUploadFile();
     		if( !is_null( $uploadFile ) ){
-    			$uploadFile->move( public_path( 'capas' ), $uploadFile->getClientOriginalName() );
+    			
+    			Image::make( $uploadFile->getPathname() )->fit(140, 150)->save( public_path($filme->imagem) );
     		}
     	});
     	
