@@ -4,40 +4,28 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Controle de Filme Assistidos</title>
+	<title>MFQJV</title>
 
 	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/1-col-portfolio.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/chosen.min.css') }}">
-	
-	<style type="text/css">
-	
-		table.botoes-acao { position: relative; margin-top: 25px; }
-		table.botoes-acao td { padding-bottom: 3px }
-		table.botoes-acao .btn { width: 115px }
-		.btn-warning { color: #000000; background-color: rgba(255, 223, 0, 1); border-color: #eea236; }
-		.req { color: red }
-		
-		table.visualizacao td { vertical-align: middle !important; }
-		table.visualizacao tr.conteudo { height: 70px !important; }
-		
-		img.capa-filme { padding: 1px;margin-right: 10px;width:140px;height:150px;border-radius: 5px;border: 1px solid yellow; }
-		
-	</style>
+	<link rel="stylesheet" href="{{ asset('/css/mfqjv.css') }}">
+
 	
 </head>
-<body>
+<body style="background: url('{{ asset('/img/bg_img.jpg') }}') no-repeat center center fixed;">
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
+		
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">Alterar navegação</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                {!! Html::link(URL::to('/'), 'Home', ['class' => 'navbar-brand']) !!}
+				<a href="{{URL::to('/')}}"><img src={{asset('img/fqjvicon.png')}} style="margin-top:10px;width:30px;" alt="Logo"></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -53,7 +41,7 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="background-color:#fff;margin-top:-30px;">
 
         <!-- Page Heading -->
         <div class="row">
@@ -78,7 +66,7 @@
 	<script src="{{ asset('/js/jquery.noty.packaged.min.js') }}"></script>
 	<script src="{{ asset('/js/chosen.jquery.min.js') }}"></script>
 	<!-- <script src="{{ asset('/js/angular.min.js') }}"></script> -->
-	<!-- <script src="{{ asset('/js/scripts.js') }}"></script> -->
+	<script src="{{ asset('/js/scripts.js') }}"></script>
 	<!-- <script src="{{ asset('/js/angular.min.js.map') }}"></script> -->
 	
 	<script type="text/javascript">
