@@ -15,7 +15,7 @@
 	          		<td class="text-capitalize"><label>Gênero:</label> {{ Form::listarGenerosDoFilme($filme->generos->all()) }}</td>
 	          	</tr>
 	          	<tr>
-	          		<td class="text-capitalize"><label>Visto em:</label> 08/09/2013</td>
+	          		<td class="text-capitalize"><label>Última visualização:</label> {{ $filme->data->format('d/m/Y') }}</td>
 	          	</tr>
 	          	<tr>
 	          		<td class="text-capitalize"><label>Nota:</label> {{ $filme->nota }}</td>
