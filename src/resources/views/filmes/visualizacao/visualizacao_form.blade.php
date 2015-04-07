@@ -16,5 +16,5 @@
     <div class="form-group">    	
 	    {!! Form::label('data', 'Data:', ['title' => 'Data em que o filme foi visto']) !!}
 	    <span class="req">*</span>
-	    {!! Form::input('date', 'data', isset($visualizacao) ? $visualizacao->data->format('Y-m-d') : '', ['class' => 'form-control']) !!}
+	    {!! Form::input('text', 'data', isset($visualizacao) ? $visualizacao->data->format('Y-m-d') : '', ['class' => 'form-control data', 'maxlength' => 10]) !!}
     </div>

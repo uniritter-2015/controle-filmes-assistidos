@@ -65,11 +65,17 @@
 	<script src="{{ asset('/js/twitterbootstrap/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('/js/jquery.noty.packaged.min.js') }}"></script>
 	<script src="{{ asset('/js/chosen.jquery.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.mask.js') }}"></script>
 	<!-- <script src="{{ asset('/js/angular.min.js') }}"></script> -->
 	<script src="{{ asset('/js/scripts.js') }}"></script>
 	<!-- <script src="{{ asset('/js/angular.min.js.map') }}"></script> -->
-	
+
 	<script type="text/javascript">
+        $(document).ready(function() {
+            $('.data').mask('00/00/0000');
+            $('.sonumero').mask('0000');
+        });
+
 
 		$(function(){
 
