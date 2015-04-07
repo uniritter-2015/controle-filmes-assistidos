@@ -7,7 +7,7 @@
     <div class="form-group">
         {!! Form::label('ano', 'Ano:') !!}
         <span class="req">*</span>
-        {!! Form::input('number', 'ano', null, ['required', 'class' => 'form-control', 'min' => "1000", 'max' => "9999"]) !!}
+        {!! Form::input('text', 'ano', null, ['required', 'class' => 'form-control sonumero', 'maxlength' => 4]) !!}
     </div>
     
     <div class="form-group">

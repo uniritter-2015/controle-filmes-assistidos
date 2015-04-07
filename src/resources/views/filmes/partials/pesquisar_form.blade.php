@@ -6,8 +6,8 @@
         {!! Form::select('nota', $notas, '', ['class' => 'form-control']) !!}
                 
         {!! Form::label('data_inicial', 'Data Inicial:') !!}
-        {!! Form::input('date', 'data_inicial', null, ['class' => 'form-control', 'maxlength' => 10]) !!}
+        {!! Form::input('text', 'data_inicial', null, ['class' => 'form-control data', 'maxlength' => 10]) !!}
 
         {!! Form::label('data_final', 'Data Final:') !!}
-        {!! Form::input('date', 'data_final', null, ['class' => 'form-control', 'maxlength' => 10]) !!}
+        {!! Form::input('text', 'data_final', null, ['class' => 'form-control data', 'maxlength' => 10]) !!}
     </div>
