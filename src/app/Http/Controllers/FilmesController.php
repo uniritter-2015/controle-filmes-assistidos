@@ -14,27 +14,27 @@ class FilmesController extends Controller {
 
     public function getIndex()
     {
-        $filmesBuilder = Filme::join('visualizacoes', 'visualizacoes.filme_id', '=', 'filmes.id')->where( \DB::raw('1'),'1');
+        $filmesBuilder = Filme::where( \DB::raw('1'),'1');
 
         if( Input::has('nome') ){
             $filmesBuilder = $filmesBuilder->where('filmes.nome','LIKE', '%'. Input::get('nome'). '%');
         }
 
-        if(Input::get('nota')!= 0){
+        if( Input::has('nota') ){
             $filmesBuilder = $filmesBuilder->where('filmes.nota', Input::get('nota'));
         }
 
         if( Input::has('data_inicial') ){
 
-            $filmesBuilder = $filmesBuilder->where('visualizacoes.data', '>=', implode('-', array_reverse(explode('/', Input::get('data_inicial')))));
+            $filmesBuilder = $filmesBuilder->where('visualizacoes.data_visto', '>=', implode('-', array_reverse(explode('/', Input::get('data_inicial')))));
         }
 
-        if( Input::has('data_final') ) {
+        if( Input::has('data_final') ){
 
-            $filmesBuilder = $filmesBuilder->where('visualizacoes.data', '<=', implode('-', array_reverse(explode('/', Input::get('data_final')))));
+            $filmesBuilder = $filmesBuilder->where('visualizacoes.data_visto', '<=', implode('-', array_reverse(explode('/', Input::get('data_final')))));
         }
 
-        $filmes = $filmesBuilder->groupBy('filmes.id')->get();
+        $filmes = $filmesBuilder->get();
 		
         return view('filmes.index', compact('filmes'));
     }
