@@ -13,7 +13,13 @@
     <div class="form-group">
         {!! Form::label('nota', 'Nota:') !!}
         <span class="req">*</span>
-		{!! Form::select('nota', $notas, null, ['class' => 'form-control chosen-select']) !!}
+        <br/>
+        {!! Form::input('radio', 'nota', 1, ['required', 'class' => 'star']) !!}
+        {!! Form::input('radio', 'nota', 2, ['required', 'class' => 'star']) !!}
+        {!! Form::input('radio', 'nota', 3, ['required', 'class' => 'star']) !!}
+        {!! Form::input('radio', 'nota', 4, ['required', 'class' => 'star']) !!}
+        {!! Form::input('radio', 'nota', 5, ['required', 'class' => 'star']) !!}
+        <br/>
     </div>
 	
     <div class="form-group">

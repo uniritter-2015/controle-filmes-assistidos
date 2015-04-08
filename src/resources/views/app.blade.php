@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/twitterbootstrap/1-col-portfolio.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/chosen.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/mfqjv.css') }}">
+    <link rel="stylesheet" href="{{ asset('/js/jquery.rating.css') }}">
 
 	
 </head>
@@ -66,6 +67,7 @@
 	<script src="{{ asset('/js/jquery.noty.packaged.min.js') }}"></script>
 	<script src="{{ asset('/js/chosen.jquery.min.js') }}"></script>
     <script src="{{ asset('/js/jquery.mask.js') }}"></script>
+    <script src="{{ asset('/js/jquery.rating.js') }}"></script>
 	<!-- <script src="{{ asset('/js/angular.min.js') }}"></script> -->
 	<script src="{{ asset('/js/scripts.js') }}"></script>
 	<!-- <script src="{{ asset('/js/angular.min.js.map') }}"></script> -->
